@@ -1,0 +1,11 @@
+<Simplicity>
+	<Cities>
+		<City ID="1" nume="Brasov, Romania" />
+		<City ID="2" nume="Sibiu, Romania" />
+	</Cities>
+	<Hotels>
+		<Hotel ID="1" nume="Aro Palace" idLocalitate="1" />
+		<Hotel ID="2" nume="Memo" idLocalitate="1" />
+		<Hotel ID="3" nume="Nicu Klein" idLocalitate="2" />
+	</Hotels>
+</Simplicity>
