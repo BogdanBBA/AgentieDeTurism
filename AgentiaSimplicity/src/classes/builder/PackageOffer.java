@@ -1,4 +1,7 @@
-package classes;
+package classes.builder;
+
+import classes.Hotel;
+import classes.Rooms;
 
 public class PackageOffer 
 {
