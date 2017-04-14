@@ -1,5 +1,6 @@
 package ui;
 
+import classes.Database;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -17,6 +18,13 @@ public class Main extends Application
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
+
+			String readResult = Database.getInstance().readFromDatabase();
+			if (!readResult.equals(""))
+				System.err.println(readResult);
+			else
+				System.out.println("Database read successfully.");
+
 		} catch (Exception e)
 		{
 			e.printStackTrace();

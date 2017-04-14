@@ -1,6 +1,6 @@
 package classes;
 
-public class User 
+public class User implements AgencyResource
 {
 	private String username;
 	private String password;
