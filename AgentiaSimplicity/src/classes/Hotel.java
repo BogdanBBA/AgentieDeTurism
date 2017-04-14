@@ -1,6 +1,6 @@
 package classes;
 
-public class Hotel 
+public class Hotel implements AgencyResource
 {
 	public int id;
 	public String name;

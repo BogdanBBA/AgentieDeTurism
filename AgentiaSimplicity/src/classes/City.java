@@ -1,6 +1,7 @@
 package classes;
 
-public class City {
+public class City implements AgencyResource
+{
 	public int id;
 	public String name;
 	
