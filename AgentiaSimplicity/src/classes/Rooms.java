@@ -1,9 +1,7 @@
 package classes;
 
-public enum Rooms 
+public enum Rooms
 {
-	SingleRoom,
-	DoubleRoom,
-	Apartament,
-	
+	SingleRoom, DoubleRoom, Apartament,
+
 }

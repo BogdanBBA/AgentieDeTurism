@@ -6,8 +6,8 @@ import classes.Rooms;
 public interface IPackageOfferBuilder 
 {
 	PackageOffer getPackageOffer();
-	void SetRoom(Rooms room);
-	void SetHotel(Hotel hotel);
-	void SetPrice(int price);
+	void setRoom(Rooms room);
+	void setHotel(Hotel hotel);
+	void setPrice(int price);
 	
 }

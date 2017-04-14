@@ -15,21 +15,21 @@ public class PackageOfferBuilder implements IPackageOfferBuilder
 	}
 
 	@Override
-	public void SetRoom(Rooms room) 
+	public void setRoom(Rooms room) 
 	{
-		packageOffer.room = room;
+		packageOffer.setRoom(room);
 	}
 
 	@Override
-	public void SetHotel(Hotel hotel) 
+	public void setHotel(Hotel hotel) 
 	{
-		packageOffer.hotel = hotel;
+		packageOffer.setHotel(hotel); 
 	}
 
 	@Override
-	public void SetPrice(int price)
+	public void setPrice(int price)
 	{
-		packageOffer.price = price;
+		packageOffer.setPrice(price); 
 	} 
 
 }

@@ -14,9 +14,9 @@ public class PackageOfferBuilderAgent
 	
 	public void Construct(Rooms room, Hotel hotel, int price)
 	{
-		_packageOfferBuilder.SetRoom(room);
-		_packageOfferBuilder.SetHotel(hotel);
-		_packageOfferBuilder.SetPrice(price);
+		_packageOfferBuilder.setRoom(room);
+		_packageOfferBuilder.setHotel(hotel);
+		_packageOfferBuilder.setPrice(price);
 	}
 	
 	public PackageOffer GetResult()

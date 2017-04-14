@@ -4,9 +4,9 @@ public class City implements AgencyResource
 {
 	public int id;
 	public String name;
-	
+
 	@Override
-	public String toString() 
+	public String toString()
 	{
 		return "City [id=" + id + ", name=" + name + "]";
 	}
@@ -17,22 +17,22 @@ public class City implements AgencyResource
 		this.name = name;
 	}
 
-	public int getId() 
+	public int getId()
 	{
 		return id;
 	}
 
-	public void setId(int id) 
+	public void setId(int id)
 	{
 		this.id = id;
 	}
 
-	public String getName() 
+	public String getName()
 	{
 		return name;
 	}
 
-	public void setName(String name) 
+	public void setName(String name)
 	{
 		this.name = name;
 	}
