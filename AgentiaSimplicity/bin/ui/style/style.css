@@ -1,0 +1,53 @@
+.button {
+	-fx-background-color:  #008080;
+	-fx-border-color:  #008080;
+	
+}
+
+.button:hover ,.button:active{
+	-fx-background-color:  #008080;
+	-fx-border-color:  #006666;
+	-fx-border-width:  3px;	
+}
+.accordion>*.titled-pane>*.title{
+	-fx-background-color: #336699;
+}
+
+.titled-pane:expanded .title .arrow-button .arrow {
+	-fx-background-color : white;
+}
+.titled-pane .title .arrow-button .arrow {
+	-fx-background-color : white;
+}
+.first-titled-pane:expanded{
+	-fx-background-color: #336699;
+	-fx-border-color:  #336699;
+}
+
+.combo-box .arrow, .combo-box .arrow-button .arrow{
+    -fx-background-color: white;
+}
+.combo-box .cell:selected {
+    -fx-text-fill: #94b8b8;
+}
+.combo-box{
+	-fx-background-color:  #008080;
+	-fx-border-color:  #008080;
+}
+
+.text-field:focused {
+    -fx-border-color: #008080;
+}
+.date-picker > .arrow-button > .arrow{
+	-fx-background-color: white;
+}
+.date-picker > .arrow-button{
+	-fx-background-color: #008080;
+	-fx-border-color:  #008080;
+	-fx-border-width:  3px;
+}
+.date-cell:hover,.date-cell:active {
+  -fx-background-color: #008080;
+  -fx-border-color:  #008080;
+  -fx-text-fill: white;
+}

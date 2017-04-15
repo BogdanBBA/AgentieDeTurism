@@ -1,0 +1,27 @@
+package classes.builder;
+
+import classes.City;
+import classes.Hotel;
+import classes.Rooms;
+
+public class testBuilder 
+{
+	public static void main(String[] args) 
+	{
+		IPackageOfferBuilder builder = new PackageOfferBuilder();
+		PackageOfferBuilderAgent agent = new PackageOfferBuilderAgent(builder);
+
+		City city = new City(1, "Brasov, Romania");
+		
+		Hotel hotel = new Hotel(1, "Aro palace", city);
+		
+		
+		Rooms room = Rooms.SingleRoom;
+		agent.Construct(room, hotel, 100);
+		
+		PackageOffer ofer = agent.GetResult();
+		
+		System.out.println(ofer);
+		
+	}
+}
