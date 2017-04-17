@@ -1,42 +1,41 @@
 package classes.proxy;
 
-import classes.User;
+import classes.model.User;
 
 public class ProtectedAccount implements IAccount
 {
-	private User user;
+	private boolean isLoggedIn;
 	
-	public User getUser() 
+	public ProtectedAccount()
 	{
-		return user;
-	}
-
-	public void setUser(User user) 
-	{
-		this.user = user;
-	}	
-	
-	
-	public ProtectedAccount(User user) 
-	{
-		this.setUser(user);
+		isLoggedIn=false;
 	}
 
 	@Override
 	public boolean reserve(User user) 
 	{
-		return true;	
+		if(isLoggedIn)
+			return true;
+		return false;
 	}
 
 	@Override
 	public boolean makePayment(User user) 
 	{
-		return true;
+		if(isLoggedIn)
+			return true;
+		return false;
 	}
 
 	@Override
 	public boolean login(User user)
 	{
-		return true;
+		User u=new User("alina","12");
+		if(user.equals(u))
+		{
+			isLoggedIn=true;
+			return true;
+		}
+		return false;
 	}
 }

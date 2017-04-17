@@ -1,7 +1,7 @@
 package classes.builder;
 
-import classes.Hotel;
-import classes.Rooms;
+import classes.model.Hotel;
+import classes.model.Rooms;
 
 public class PackageOffer
 {

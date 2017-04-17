@@ -2,6 +2,10 @@ package classes;
 
 import java.util.ArrayList;
 
+import classes.model.City;
+import classes.model.Hotel;
+import classes.model.User;
+
 public class Database
 {
 	private final ArrayList<User> users;

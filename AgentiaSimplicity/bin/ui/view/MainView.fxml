@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.media.*?>
 <?import java.net.*?>
@@ -21,7 +22,7 @@
                         <Image url="@../images/logo.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="buttonLogout" mnemonicParsing="false" text="Log out" textFill="#fcfafa" visible="false" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="5.0">
+                  <Button fx:id="buttonLogout" mnemonicParsing="false" onAction="#logout" text="Log out" textFill="#fcfafa" visible="false" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="5.0">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -29,20 +30,10 @@
                </children>
             </AnchorPane>
          </top>
-         <center>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <children>
-                  <ScrollPane fx:id="scroll" prefHeight="700.0" prefWidth="624.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-               </children>
-            </AnchorPane>
-         </center>
-         <left>
-            <Pane prefHeight="700.0" prefWidth="90.0" BorderPane.alignment="CENTER" />
-         </left>
          <right>
-            <AnchorPane prefHeight="700.0" prefWidth="260.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="671.0" prefWidth="300.0" BorderPane.alignment="CENTER">
                <children>
-                  <VBox layoutX="102.0" prefHeight="700.0" prefWidth="260.0" spacing="17.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                  <VBox alignment="CENTER" layoutX="102.0" prefHeight="700.0" prefWidth="260.0" spacing="17.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="17.0" prefWidth="262.0" text="Search" textFill="#336699">
                            <font>
@@ -53,30 +44,35 @@
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font></Label>
-                        <TextField fx:id="destinationField" />
+                        <TextField fx:id="destinationField" maxWidth="286.0" prefHeight="25.0" prefWidth="286.0" />
                         <Label alignment="CENTER" prefHeight="17.0" prefWidth="264.0" text="Check-in date" textFill="#336699">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font></Label>
-                        <DatePicker fx:id="checkinPicker" prefHeight="25.0" prefWidth="279.0" />
+                        <DatePicker fx:id="checkinPicker" prefHeight="25.0" prefWidth="286.0" />
                         <Label alignment="CENTER" prefHeight="17.0" prefWidth="262.0" text="Check-out date" textFill="#336699">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font></Label>
-                        <DatePicker fx:id="checkoutPicker" prefHeight="25.0" prefWidth="262.0" />
+                        <DatePicker fx:id="checkoutPicker" prefHeight="25.0" prefWidth="286.0" />
                         <Label alignment="CENTER" prefHeight="17.0" prefWidth="261.0" text="Accommodation type" textFill="#336699">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font></Label>
-                        <ComboBox fx:id="accomodationCombo" prefHeight="25.0" prefWidth="267.0" />
+                        <ComboBox fx:id="accomodationCombo" prefHeight="25.0" prefWidth="286.0" />
                         <Label alignment="CENTER" prefHeight="17.0" prefWidth="263.0" text="Room type" textFill="#336699">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font></Label>
-                        <ComboBox fx:id="roomCombo" prefHeight="25.0" prefWidth="261.0" />
-                        <Button fx:id="buttonSearch" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="266.0" text="Search" textFill="WHITE">
+                        <ComboBox fx:id="roomCombo" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="286.0" />
+                        <Label fx:id="noResultLabel" alignment="CENTER" prefHeight="17.0" prefWidth="300.0" textFill="#9e0303">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="buttonSearch" mnemonicParsing="false" onAction="#search" prefHeight="31.0" prefWidth="286.0" text="Search" textFill="WHITE">
                            <VBox.margin>
-                              <Insets top="80.0" />
+                              <Insets top="70.0" />
                            </VBox.margin>
                            <font>
                               <Font name="System Bold" size="15.0" />
@@ -88,12 +84,15 @@
             </AnchorPane>
          </right>
          <bottom>
-            <Pane prefHeight="29.0" prefWidth="1024.0" style="-fx-background-color: #336699;" BorderPane.alignment="CENTER" />
+            <Pane prefHeight="38.0" prefWidth="1024.0" style="-fx-background-color: #336699;" BorderPane.alignment="CENTER" />
          </bottom>
+         <left>
+            <Pane fx:id="leftPane" prefHeight="671.0" prefWidth="169.0" BorderPane.alignment="CENTER" />
+         </left>
       </BorderPane>
       <Accordion fx:id="accordion" prefHeight="204.0" prefWidth="244.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="5.0">
         <panes>
-          <TitledPane alignment="CENTER_RIGHT" animated="false" contentDisplay="CENTER" prefHeight="209.0" prefWidth="234.0" text="Login" textFill="WHITE">
+          <TitledPane fx:id="titledPane" alignment="CENTER_RIGHT" animated="false" contentDisplay="CENTER" prefHeight="209.0" prefWidth="234.0" text="Login" textFill="WHITE">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="85.0" prefWidth="200.0" style="-fx-background-color: #336699;">
                      <children>

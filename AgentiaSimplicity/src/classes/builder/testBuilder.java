@@ -1,8 +1,8 @@
 package classes.builder;
 
-import classes.City;
-import classes.Hotel;
-import classes.Rooms;
+import classes.model.City;
+import classes.model.Hotel;
+import classes.model.Rooms;
 
 public class testBuilder 
 {

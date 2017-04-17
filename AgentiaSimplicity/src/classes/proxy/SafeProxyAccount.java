@@ -1,66 +1,63 @@
 package classes.proxy;
 
-import classes.User;
+import classes.model.User;
 
 public class SafeProxyAccount implements IAccount
 {
 	private ProtectedAccount wrappedAccount;
 	
-	public SafeProxyAccount(User u)
+	public SafeProxyAccount(User user)
 	{
-		if(authenticate(u))
+		if(checkUser(user))
 		{
-			wrappedAccount=new ProtectedAccount(u);
+			wrappedAccount=new ProtectedAccount();
 		}
 		else
 			wrappedAccount=null;
 	}
 	
-	public boolean authenticate(User u)
+	public boolean checkUser(User user)
 	{
-		User us=new User("alina","12");
-		if(u.equals(us))
-			return true;
-		
-		return false;
+		if(user.getUsername().isEmpty() || user.getPassword().isEmpty() || user==null)
+			return false;
+		return true;
 	}
 
 	@Override
-	public boolean reserve(User u)
+	public boolean reserve(User user)
 	{
 		if(wrappedAccount!=null)
 		{
-			wrappedAccount.reserve(u);
-			return true;
+			if(wrappedAccount.reserve(user))
+				return true;
 		}
 		return false;
 		
 	}
 
 	@Override
-	public boolean makePayment(User u) 
+	public boolean makePayment(User user) 
 	{
 		if(wrappedAccount!=null)
 		{
-			wrappedAccount.makePayment(u);
-			return true;
+			if(wrappedAccount.makePayment(user))
+				return true;
 		}
 		return false;
 		
 	}
 
 	@Override
-	public boolean login(User u) 
+	public boolean login(User user)
 	{
 		if(wrappedAccount!=null)
 		{
-			wrappedAccount.login(u);
-			return true;
+			if(wrappedAccount.login(user))
+				return true;
+			
 		}
 		return false;
 		
 	}
-	
-	
 
 }

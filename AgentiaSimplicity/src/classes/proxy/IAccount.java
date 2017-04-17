@@ -1,6 +1,6 @@
 package classes.proxy;
 
-import classes.User;
+import classes.model.User;
 
 public interface IAccount 
 {

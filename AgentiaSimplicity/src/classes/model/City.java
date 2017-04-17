@@ -1,4 +1,6 @@
-package classes;
+package classes.model;
+
+import classes.AgencyResource;
 
 public class City implements AgencyResource
 {

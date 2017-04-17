@@ -1,7 +1,9 @@
 .button {
 	-fx-background-color:  #008080;
 	-fx-border-color:  #008080;
-	
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+	-fx-font-size:15px;
 }
 
 .button:hover ,.button:active{
@@ -27,12 +29,21 @@
 .combo-box .arrow, .combo-box .arrow-button .arrow{
     -fx-background-color: white;
 }
+.combo-box .arrow, .combo-box .arrow-button{
+    -fx-text-fill: white;
+}
+.combo-box-popup .list-view .list-cell:hover {
+    -fx-background-color: #336699;
+    -fx-text-fill: white;
+}
 .combo-box .cell:selected {
-    -fx-text-fill: #94b8b8;
+    -fx-background-color: white;
+    -fx-text-fill: #008080;
 }
 .combo-box{
-	-fx-background-color:  #008080;
-	-fx-border-color:  #008080;
+	-fx-background-color: #008080;
+	-fx-border-color: #008080;
+	-fx-font-weight: bold;
 }
 
 .text-field:focused {
@@ -50,4 +61,19 @@
   -fx-background-color: #008080;
   -fx-border-color:  #008080;
   -fx-text-fill: white;
+}
+.scroll-pane .track{
+	-fx-background-color:white; 
+}
+.scroll-pane .thumb{
+	-fx-background-color:#336699; 
+}
+.scroll-pane .increment-button ,.scroll-pane .decrement-button {
+	-fx-background-color: #336699;
+}
+.scroll-pane .increment-arrow,.scroll-pane .decrement-arrow{
+    -fx-background-color: white;
+}
+.scroll-pane {
+    -fx-background-color:transparent;
 }
