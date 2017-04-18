@@ -6,7 +6,7 @@ import java.util.List;
 public class BasicPackageOffer implements IPackageLevel
 {
 
-	private EPackageType type;
+	private EPackageType typeLevel;
 	private int price;
 	
 	public List<String> BasicPackageOfferBenefits;
@@ -15,21 +15,21 @@ public class BasicPackageOffer implements IPackageLevel
 
 	
 	@Override
-	public EPackageType GetType() 
+	public EPackageType getType() 
 	{
-		return type;
+		return this.typeLevel;
 	}
 
 	
 	@Override
-	public void SetType(EPackageType typeLevel) 
+	public void setType(EPackageType typeLevel) 
 	{
-		type = typeLevel;
+		this.typeLevel = typeLevel;
 	}
 	
 	public int getPrice() 
 	{
-		return price;
+		return this.price;
 	}
 
 	public void setPrice(int price) 
@@ -69,7 +69,7 @@ public class BasicPackageOffer implements IPackageLevel
 
 	public BasicPackageOffer() 
 	{
-		type = EPackageType.Basic;
+		this.typeLevel = EPackageType.Basic;
 		
 		BasicPackageOfferBenefits = new ArrayList<String>();
 		AllInclusivePackageOfferBenefits = new ArrayList<String>();

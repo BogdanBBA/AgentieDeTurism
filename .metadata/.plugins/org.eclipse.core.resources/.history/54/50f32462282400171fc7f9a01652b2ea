@@ -1,0 +1,62 @@
+package Decorator;
+
+public abstract class PackageOfferDecorator implements IPackageLevel 
+{
+
+	public IPackageLevel myPackageOffer;
+	public EPackageType type;
+	
+	public IPackageLevel getMyPackageOffer() {
+		return myPackageOffer;
+	}
+
+	public void setMyPackageOffer(IPackageLevel myPackageOffer) {
+		this.myPackageOffer = myPackageOffer;
+	}
+
+	public EPackageType getType() {
+		return type;
+	}
+
+	public void setType(EPackageType type) {
+		this.type = type;
+	}
+
+	public PackageOfferDecorator(IPackageLevel level) 
+	{
+		setMyPackageOffer(level);
+	}
+	
+	
+	
+	@Override
+	public EPackageType GetType() 
+	{
+		return null;
+	}
+
+	@Override
+	public void SetType() 
+	{
+		
+	}
+
+	@Override
+	public void setBenefits(EBenefitsType type, String name, int price) 
+	{
+		myPackageOffer.setBenefits(type, name, price);
+	}
+
+	@Override
+	public void Assemble() 
+	{
+		myPackageOffer.Assemble();
+	}
+
+	@Override
+	public void Display() 
+	{
+		myPackageOffer.Display();
+	}
+
+}

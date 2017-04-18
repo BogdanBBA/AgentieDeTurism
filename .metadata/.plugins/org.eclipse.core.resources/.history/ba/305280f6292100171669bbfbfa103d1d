@@ -1,0 +1,12 @@
+package Decorator;
+
+public interface IPackageLevel 
+{
+	public Enum EPackageType
+	{
+		Basic,
+		AllInclusive,
+		UltraAllInclusive,
+	};
+
+}

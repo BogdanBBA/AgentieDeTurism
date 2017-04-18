@@ -1,0 +1,115 @@
+package Decorator;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class BasicPackageOffer implements IPackageLevel
+{
+
+	private EPackageType type;
+	private int price;
+	
+	public List<String> BasicPackageOfferBenefits;
+	public List<String> AllInclusivePackageOfferBenefits;
+	public List<String> UltraAllInclusivePackageOfferBenefits;
+
+	
+	@Override
+	public EPackageType GetType() 
+	{
+		return type;
+	}
+
+	@Override
+	public void SetType() 
+	{
+		type = EPackageType.Basic;
+	}
+	
+	public int getPrice() 
+	{
+		return price;
+	}
+
+	public void setPrice(int price) 
+	{
+		this.price = price;
+	}
+
+	public List<String> getBasicPackageOfferBenefits() 
+	{
+		return BasicPackageOfferBenefits;
+	}
+
+	public void setBasicPackageOfferBenefits(List<String> basicPackageOfferBenefits) 
+	{
+		BasicPackageOfferBenefits = new ArrayList<>(basicPackageOfferBenefits);
+	}
+
+	public List<String> getAllInclusivePackageOfferBenefits() 
+	{
+		return AllInclusivePackageOfferBenefits;
+	}
+
+	public void setAllInclusivePackageOfferBenefits(List<String> allInclusivePackageOfferBenefits) 
+	{
+		AllInclusivePackageOfferBenefits = allInclusivePackageOfferBenefits;
+	}
+
+	public List<String> getUltraAllInclusivePackageOfferBenefits() 
+	{
+		return UltraAllInclusivePackageOfferBenefits;
+	}
+
+	public void setUltraAllInclusivePackageOfferBenefits(List<String> ultraAllInclusivePackageOfferBenefits) 
+	{
+		UltraAllInclusivePackageOfferBenefits = ultraAllInclusivePackageOfferBenefits;
+	}
+
+	public BasicPackageOffer() 
+	{
+		type = EPackageType.Basic;
+		
+		List<String> BasicPackageOfferBenefits = new ArrayList<String>();
+		List<String> AllInclusivePackageOfferBenefits = new ArrayList<String>();
+		List<String> UltraAllInclusivePackageOfferBenefits = new ArrayList<String>();
+	}
+	
+	@Override
+	public void setBenefits(EBenefitsType type, String name, int price) 
+	{
+		List<String> benefits = new ArrayList<String>();
+		
+		switch(type)
+		{
+			case BasicType:
+				benefits = BasicPackageOfferBenefits;
+				break;
+			case AllInclusiveType:
+				
+				break;
+				
+			case UltraAllInclusiveType:
+				
+				break;
+			default:
+				break;
+		}
+	}
+
+	@Override
+	public void Assemble() 
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void Display()
+		  {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+}

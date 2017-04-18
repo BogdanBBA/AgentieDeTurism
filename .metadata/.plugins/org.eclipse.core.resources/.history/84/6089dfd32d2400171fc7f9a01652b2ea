@@ -1,0 +1,9 @@
+package Decorator;
+
+public class TestDecorator 
+{
+	PackageOfferDecorator allInclusiveDecorator = new AllInclusivePackageOfferDecorator(new BasicPackageOffer());
+	allInclusiveDecorator.Assemble();
+	
+	
+}

@@ -1,0 +1,11 @@
+package Decorator;
+
+public class TestDecorator 
+{
+	PackageOfferDecorator allInclusiveDecorator = new AllInclusivePackageOfferDecorator(new BasicPackageOffer());
+	allInclusiveDecorator.Assemble();
+	
+	CarDecorator accessCarDecorator = new AccesDecorator(new BasicCar());
+    accessCarDecorator.Assemble();
+    accessCarDecorator.Display();
+}

@@ -6,7 +6,7 @@ public class UltraAllInclusivePackageOfferDecorator extends AllInclusivePackageO
 	public UltraAllInclusivePackageOfferDecorator(IPackageLevel level) 
 	{
 		super(level);
-		level.SetType(EPackageType.UltraAllIncusive);
+		level.setType(EPackageType.UltraAllIncusive);
 	}
 
 	

@@ -1,0 +1,7 @@
+package Decorator;
+
+public class BasicPackageOfferDecorator extends PackageOfferDecorator
+{
+
+	
+}

@@ -1,0 +1,12 @@
+package Decorator;
+
+public class UltraAllInclusivePackageOfferDecorator extends AllInclusivePackageOfferDecorator
+{
+
+	public UltraAllInclusivePackageOfferDecorator(IPackageLevel level) 
+	{
+		super(level);
+		level.SetType(EPackageType.UltraAllIncusive);
+	}
+
+}

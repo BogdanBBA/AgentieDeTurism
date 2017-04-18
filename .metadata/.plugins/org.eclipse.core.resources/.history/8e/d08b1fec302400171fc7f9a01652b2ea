@@ -1,0 +1,20 @@
+package Decorator;
+
+public class TestTheDecorator {
+
+	public static void main(String[] args) 
+	{
+		
+		PackageOfferDecorator basic = new BasicPackageOffer(new BasicPackageOffer())
+		
+		PackageOfferDecorator allInclusiveDecorator = new AllInclusivePackageOfferDecorator(new BasicPackageOffer());
+		allInclusiveDecorator.Assemble();
+		allInclusiveDecorator.Display();
+		
+		PackageOfferDecorator ultraAllInclusiveDecorator = new UltraAllInclusivePackageOfferDecorator(new BasicPackageOffer());
+		ultraAllInclusiveDecorator.Assemble();
+		ultraAllInclusiveDecorator.Display();
+
+	}
+
+}

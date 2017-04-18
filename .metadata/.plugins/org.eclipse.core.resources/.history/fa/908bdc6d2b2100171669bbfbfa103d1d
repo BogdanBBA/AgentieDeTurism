@@ -1,0 +1,10 @@
+package Decorator;
+
+public interface IPackageLevel 
+{
+	EPackageType Type
+	
+	void setBenefits(EBenefitsType type, String name, int price);
+	void Assemble();
+	void Display();
+}

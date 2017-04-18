@@ -1,0 +1,12 @@
+package Decorator;
+
+public abstract class IPackageLevel 
+{
+	// de adaugat in 
+	EPackageType GetType();
+	EPackageType SetType();
+	
+	void setBenefits(EBenefitsType type, String name, int price);
+	void Assemble();
+	void Display();
+}

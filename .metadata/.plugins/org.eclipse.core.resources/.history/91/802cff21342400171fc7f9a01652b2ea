@@ -1,0 +1,8 @@
+package Decorator;
+
+public enum EBenefitsType 
+{
+	BasicType,
+	AllInclusiveType,
+	UltraAllInclusiveType,
+}

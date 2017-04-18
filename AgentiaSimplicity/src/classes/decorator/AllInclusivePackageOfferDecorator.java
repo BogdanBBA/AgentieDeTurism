@@ -3,17 +3,17 @@ package classes.decorator;
 public class AllInclusivePackageOfferDecorator extends PackageOfferDecorator 
 {
 
-	public AllInclusivePackageOfferDecorator(IPackageLevel level) 
+	public AllInclusivePackageOfferDecorator(IPackageLevel typeLevel) 
 	{
-		super(level);
-		level.SetType(EPackageType.AllInclusive);
-		// TODO Auto-generated constructor stub
+		super(typeLevel);
+	
+		typeLevel.setType(EPackageType.AllInclusive);
 	}
 
 	@Override
-	public void SetType(EPackageType type) 
+	public void setType(EPackageType type) 
 	{
-		// TODO Auto-generated method stub
+		super.setType(type);
 	}
 	
 	@Override

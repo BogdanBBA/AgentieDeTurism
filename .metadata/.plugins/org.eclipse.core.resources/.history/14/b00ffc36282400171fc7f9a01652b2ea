@@ -1,0 +1,60 @@
+package Decorator;
+
+public abstract class PackageOfferDecorator implements IPackageLevel 
+{
+
+	public IPackageLevel myPackageOffer;
+	public EPackageType type;
+	
+	public IPackageLevel getMyPackageOffer() {
+		return myPackageOffer;
+	}
+
+	public void setMyPackageOffer(IPackageLevel myPackageOffer) {
+		this.myPackageOffer = myPackageOffer;
+	}
+
+	public EPackageType getType() {
+		return type;
+	}
+
+	public void setType(EPackageType type) {
+		this.type = type;
+	}
+
+	public PackageOfferDecorator(IPackageLevel level) 
+	{
+		setMyPackageOffer(level);
+	}
+	
+	@Override
+	public EPackageType GetType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void SetType() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setBenefits(EBenefitsType type, String name, int price) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void Assemble() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void Display() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

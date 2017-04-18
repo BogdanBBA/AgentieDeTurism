@@ -16,6 +16,8 @@ public class TestTheDecorator {
 		PackageOfferDecorator ultraAllInclusiveDecorator = new UltraAllInclusivePackageOfferDecorator(new BasicPackageOffer());
 		ultraAllInclusiveDecorator.Assemble();
 		ultraAllInclusiveDecorator.Display();
+		
+		//DECORATOR
 
 	}
 

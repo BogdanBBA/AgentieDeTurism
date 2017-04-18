@@ -1,0 +1,19 @@
+package Decorator;
+
+public class AllInclusivePackageOfferDecorator extends PackageOfferDecorator 
+{
+
+	public AllInclusivePackageOfferDecorator(IPackageLevel level) 
+	{
+		super(level);
+		level.SetType(EPackageType.AllInclusive);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void SetType(EPackageType type) 
+	{
+		level.SetType(EPackageType.AllInclusive);
+	}
+
+}

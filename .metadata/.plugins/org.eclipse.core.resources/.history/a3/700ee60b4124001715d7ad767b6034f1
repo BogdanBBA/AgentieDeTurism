@@ -1,0 +1,27 @@
+package classes.decorator;
+
+public class AllInclusivePackageOfferDecorator extends PackageOfferDecorator 
+{
+
+	public AllInclusivePackageOfferDecorator(IPackageLevel level) 
+	{
+		super(level);
+		level.SetType(EPackageType.AllInclusive);
+	}
+
+	@Override
+	public void SetType(EPackageType type) 
+	{
+		super.setType(type);
+	}
+	
+	@Override
+	public void Assemble()
+	{
+		super.Assemble();
+		
+		setBenefits(EBenefitsType.AllInclusiveType, "bautura moca 24/24", 200);
+	}
+	
+
+}

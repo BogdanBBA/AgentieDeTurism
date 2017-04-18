@@ -1,6 +1,7 @@
 package classes.builder;
 
 import classes.model.Hotel;
+import classes.decorator.IPackageLevel;
 import classes.model.ERoomType;
 
 public class PackageOfferBuilder implements IPackageOfferBuilder
@@ -29,6 +30,12 @@ public class PackageOfferBuilder implements IPackageOfferBuilder
 	public void setPrice(int price)
 	{
 		packageOffer.setPrice(price);
+	}
+
+	@Override
+	public void setPackageLevel(IPackageLevel packageLevel) 
+	{
+		packageOffer.setPackageLevel(packageLevel);
 	}
 
 }

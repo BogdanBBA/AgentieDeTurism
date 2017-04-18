@@ -1,6 +1,7 @@
 package classes.builder;
 
 import classes.model.Hotel;
+import classes.decorator.IPackageLevel;
 import classes.model.ERoomType;
 
 public class PackageOfferBuilderAgent
@@ -12,8 +13,9 @@ public class PackageOfferBuilderAgent
 		this._packageOfferBuilder = packageOfferBuilder;
 	}
 
-	public void Construct(ERoomType roomType, Hotel hotel, int price)
+	public void Construct(ERoomType roomType, Hotel hotel, IPackageLevel packageLevel, int price)
 	{
+		_packageOfferBuilder.setPackageLevel(packageLevel);
 		_packageOfferBuilder.setRoomType(roomType);
 		_packageOfferBuilder.setHotel(hotel);
 		_packageOfferBuilder.setPrice(price);

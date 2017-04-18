@@ -1,6 +1,7 @@
 package classes.builder;
 
 import classes.model.Hotel;
+import classes.decorator.IPackageLevel;
 import classes.model.ERoomType;
 
 public class PackageOffer
@@ -8,6 +9,18 @@ public class PackageOffer
 	private ERoomType roomType;
 	private Hotel hotel;
 	private int price;
+	private IPackageLevel packageLevel;
+
+	public IPackageLevel getPackageLevel() 
+	{
+		return packageLevel;
+	}
+
+	public void setPackageLevel(IPackageLevel packageLevel) 
+	{
+		this.packageLevel = packageLevel;
+		this.packageLevel.Assemble();
+	}
 
 	public ERoomType getRoom()
 	{
@@ -40,9 +53,11 @@ public class PackageOffer
 	}
 
 	@Override
-	public String toString()
-	{
-		return "PackageOffer [room=" + roomType + ", hotel=" + hotel + ", price=" + price + "]";
+	public String toString() {
+		return "PackageOffer [roomType=" + roomType + ", hotel=" + hotel + ", price=" + price + ", packageLevel="
+				+ packageLevel.getType() + "]";
 	}
 
+	
+	
 }

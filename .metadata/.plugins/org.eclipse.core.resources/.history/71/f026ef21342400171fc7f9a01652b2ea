@@ -1,0 +1,8 @@
+package Decorator;
+
+public enum EPackageType 
+{
+	Basic,
+	AllInclusive,
+	UltraAllIncusive,
+}

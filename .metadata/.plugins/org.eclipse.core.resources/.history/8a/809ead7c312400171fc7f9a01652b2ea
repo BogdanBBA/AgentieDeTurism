@@ -1,0 +1,13 @@
+package Decorator;
+
+public class BasicPackageOfferDecorator extends PackageOfferDecorator
+{
+
+	public BasicPackageOfferDecorator(IPackageLevel level) 
+	{
+		super(level);
+		level.SetType(EPackageType.Basic);
+	}
+
+	
+}
