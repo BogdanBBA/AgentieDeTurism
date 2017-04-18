@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import classes.model.User;
 import classes.proxy.SafeProxyAccount;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,7 +23,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -73,6 +71,8 @@ public class MainViewController
 	List<Button> buttons=new ArrayList<Button>();
 	private ObservableList<String> accomodations = FXCollections.observableArrayList("Hotel","Motel","Inns","Guesthouse");
 	private String chosenAccomodation;
+	private LocalDate inDate;
+	private LocalDate outDate;
 
 	public void setSafeAccount(SafeProxyAccount safeAcc)
 	{
@@ -105,6 +105,8 @@ public class MainViewController
 						OfferViewController controller = fxmlLoader.<OfferViewController>getController();
 						controller.setImageView(uri);
 						controller.setSafeAccount(safeAccount);
+						controller.setInDate(inDate);
+						controller.setOutDate(outDate);
 		  				controller.setView();
 		  				Scene scene = new Scene(root,1024,768);
 		  				scene.getStylesheets().add(getClass().getResource("/ui/style/style.css").toExternalForm());
@@ -141,21 +143,18 @@ public class MainViewController
 	{
 		graphicM.isLoggedin(safeAccount, buttonLogout, accordion);
 		initializeComboBox();
-		v = new VBox();
 		
-		//Button b = new Button("add");
-	    //b.setOnAction(ev -> v.getChildren().add(new Label("Test")));
+		v = new VBox();
 	    v.setAlignment(Pos.TOP_RIGHT);
 	    v.setSpacing(20);
 	    v.setPrefSize(640, 671);
 	    leftPane.setPrefWidth(1024-955);
-	    ScrollPane scrollPane = new ScrollPane(v);
 	    
+	    ScrollPane scrollPane = new ScrollPane(v);
 	    scrollPane.setFitToHeight(true);
 	    scrollPane.setMaxWidth(655);
 	    initializeListOfOffers(v,scrollPane);
 	    border.setCenter(scrollPane);
-	    //border.setBottom(b);		
 	}
 	
 	
@@ -164,8 +163,8 @@ public class MainViewController
 	{
 		String result="";
 		String destination=destinationField.getText();
-		LocalDate inDate = checkinPicker.getValue();
-		LocalDate outDate = checkoutPicker.getValue();
+		inDate = checkinPicker.getValue();
+		outDate = checkoutPicker.getValue();
 		
 		
 		if(destination.isEmpty() && inDate==null && outDate==null && chosenAccomodation==null)

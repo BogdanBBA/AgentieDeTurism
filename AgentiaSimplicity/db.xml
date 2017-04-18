@@ -6,6 +6,8 @@
 	<Cities>
 		<City ID="1" name="Brasov, Romania" />
 		<City ID="2" name="Sibiu, Romania" />
+		<City ID="3" name="Athena, Greece" />
+		<City ID="4" name="Paris, France" />
 	</Cities>
 	<Hotels>
 		<Hotel ID="1" name="Aro Palace" cityID="1" />

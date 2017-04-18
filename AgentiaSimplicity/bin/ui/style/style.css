@@ -49,6 +49,10 @@
 .text-field:focused {
     -fx-border-color: #008080;
 }
+.date-picker{
+	-fx-text-fill: #336699;
+	-fx-font-weight: bold;
+}
 .date-picker > .arrow-button > .arrow{
 	-fx-background-color: white;
 }

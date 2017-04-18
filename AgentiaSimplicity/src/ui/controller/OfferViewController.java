@@ -68,22 +68,28 @@ public class OfferViewController
 	
 	private ObservableList<String> rooms = FXCollections.observableArrayList("Single room","Double room","Apartment");
 	private ObservableList<String> facilities = FXCollections.observableArrayList("Basic","All inclusive","Ultra all inclusive");
-	private ObservableList<String> travel = FXCollections.observableArrayList("Not included","By plane","By bus");
+	private ObservableList<String> travel = FXCollections.observableArrayList("Not included","By plane","By bus","By train");
 	private SafeProxyAccount safeAccount;
 	public GraphicMethods graphicM=new GraphicMethods();
+	private LocalDate inDate;
+	private LocalDate outDate;
 	private String chosenRoom;
 	private String chosenFacility;
 	private String travellingType;
 	
-	
-	public SafeProxyAccount getSafeAccount() 
-	{
-		return safeAccount;
-	}
-	
 	public void setSafeAccount(SafeProxyAccount safeAccount) 
 	{
 		this.safeAccount = safeAccount;
+	}
+	
+	public void setInDate(LocalDate inDate) 
+	{
+		this.inDate=inDate;
+	}
+	
+	public void setOutDate(LocalDate outDate) 
+	{
+		this.outDate=outDate;
 	}
 	
 	public void setImageView(String uri) 
@@ -118,6 +124,14 @@ public class OfferViewController
 	public void setView()
 	{
 		initializeComboBoxes();
+		if(inDate != null)
+		{
+			checkinPicker.setPromptText(inDate.toString());
+			checkinPicker.setDisable(true);
+			checkinPicker.setStyle("-fx-opacity: 1");
+			checkinPicker.getEditor().setStyle("-fx-opacity: 1");
+			checkinPicker.getEditor().setStyle("-fx-text-inner-color: #FF01F3");
+		}
 		graphicM.isLoggedin(safeAccount, buttonLogout, accordion);
 		imageView.setImage(new Image("/ui/images/mypic.jpg",412,393,false, false));
 		pictureLabel.setGraphic(imageView);
