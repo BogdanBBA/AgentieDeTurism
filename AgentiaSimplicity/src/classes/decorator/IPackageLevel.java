@@ -3,7 +3,7 @@ package classes.decorator;
 public interface IPackageLevel 
 {
 	EPackageType GetType();
-	void SetType();
+	void SetType(EPackageType type);
 	
 	void setBenefits(EBenefitsType type, String name, int price);
 	void Assemble();
