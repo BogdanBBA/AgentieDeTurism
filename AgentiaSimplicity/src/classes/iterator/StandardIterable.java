@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 import classes.AgencyResource;
 
-public class StandardEnumerable implements IEnumerable
+public class StandardIterable implements IIterable
 {
 	private ArrayList<AgencyResource> items;
 
 	@Override
-	public IEnumerator getEnumerator(ArrayList<AgencyResource> resources)
+	public IIterator getIterator(ArrayList<AgencyResource> resources)
 	{
 		this.items = resources;
-		return new StandardEnumerator(this);
+		return new StandardIterator(this);
 	}
 
 	public int count()

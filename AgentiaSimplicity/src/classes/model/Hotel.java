@@ -8,12 +8,6 @@ public class Hotel implements AgencyResource
 	public String name;
 	public City city;
 
-	@Override
-	public String toString()
-	{
-		return "Hotel [id=" + id + ", name=" + name + ", city=" + city + "]";
-	}
-
 	public Hotel(int id, String name, City city)
 	{
 		this.id = id;
@@ -26,19 +20,9 @@ public class Hotel implements AgencyResource
 		return id;
 	}
 
-	public void setId(int id)
-	{
-		this.id = id;
-	}
-
 	public String getName()
 	{
 		return name;
-	}
-
-	public void setName(String name)
-	{
-		this.name = name;
 	}
 
 	public City getCity()
@@ -46,9 +30,9 @@ public class Hotel implements AgencyResource
 		return city;
 	}
 
-	public void setCity(City city)
+	@Override
+	public String toString()
 	{
-		this.city = city;
+		return "Hotel [id=" + id + ", name=" + name + ", city=" + city + "]";
 	}
-
 }

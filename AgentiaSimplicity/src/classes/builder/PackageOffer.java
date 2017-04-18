@@ -1,22 +1,22 @@
 package classes.builder;
 
 import classes.model.Hotel;
-import classes.model.Rooms;
+import classes.model.ERoomType;
 
 public class PackageOffer
 {
-	private Rooms room;
+	private ERoomType roomType;
 	private Hotel hotel;
 	private int price;
 
-	public Rooms getRoom()
+	public ERoomType getRoom()
 	{
-		return room;
+		return roomType;
 	}
 
-	public void setRoom(Rooms room)
+	public void setRoom(ERoomType roomType)
 	{
-		this.room = room;
+		this.roomType = roomType;
 	}
 
 	public Hotel getHotel()
@@ -42,7 +42,7 @@ public class PackageOffer
 	@Override
 	public String toString()
 	{
-		return "PackageOffer [room=" + room + ", hotel=" + hotel + ", price=" + price + "]";
+		return "PackageOffer [room=" + roomType + ", hotel=" + hotel + ", price=" + price + "]";
 	}
 
 }

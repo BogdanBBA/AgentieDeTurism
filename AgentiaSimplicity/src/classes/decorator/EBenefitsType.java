@@ -1,8 +1,6 @@
 package classes.decorator;
 
-public enum EBenefitsType 
+public enum EBenefitsType
 {
-	BasicType,
-	AllInclusiveType,
-	UltraAllInclusiveType,
+	BasicType, AllInclusiveType, UltraAllInclusiveType,
 }

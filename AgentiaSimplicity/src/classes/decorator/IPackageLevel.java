@@ -1,11 +1,14 @@
 package classes.decorator;
 
-public interface IPackageLevel 
+public interface IPackageLevel
 {
-	EPackageType GetType();
-	void SetType();
-	
+	EPackageType getType();
+
+	void setType();
+
 	void setBenefits(EBenefitsType type, String name, int price);
-	void Assemble();
-	void Display();
+
+	void assemble();
+
+	void display();
 }

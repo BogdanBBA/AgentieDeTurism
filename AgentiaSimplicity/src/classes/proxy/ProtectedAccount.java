@@ -1,28 +1,29 @@
 package classes.proxy;
 
 import classes.model.User;
+import classes.Database;
 
 public class ProtectedAccount implements IAccount
 {
 	private boolean isLoggedIn;
-	
+
 	public ProtectedAccount()
 	{
-		isLoggedIn=false;
+		isLoggedIn = false;
 	}
 
 	@Override
-	public boolean reserve(User user) 
+	public boolean reserve(User user)
 	{
-		if(isLoggedIn)
+		if (isLoggedIn)
 			return true;
 		return false;
 	}
 
 	@Override
-	public boolean makePayment(User user) 
+	public boolean makePayment(User user)
 	{
-		if(isLoggedIn)
+		if (isLoggedIn)
 			return true;
 		return false;
 	}
@@ -30,12 +31,12 @@ public class ProtectedAccount implements IAccount
 	@Override
 	public boolean login(User user)
 	{
-		User u=new User("alina","12");
-		if(user.equals(u))
-		{
-			isLoggedIn=true;
-			return true;
-		}
+		for (User iUser : Database.getInstance().getUsers())
+			if (user.equals(iUser))
+			{
+				isLoggedIn = true;
+				return true;
+			}
 		return false;
 	}
 }

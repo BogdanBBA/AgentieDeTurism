@@ -22,7 +22,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import ui.GraphicMethods;
 
-public class OfferViewController 
+public class OfferViewController
 {
 	@FXML
 	private Pane leftPane;
@@ -57,58 +57,58 @@ public class OfferViewController
 	@FXML
 	private TextArea basicInfoText;
 	@FXML
-	private TextArea extraInfoText;	
+	private TextArea extraInfoText;
 	@FXML
 	private ImageView imageView;
-	private Stage primaryStage=new Stage();
+	private Stage primaryStage = new Stage();
 	private SafeProxyAccount safeAccount;
-	public GraphicMethods graphicM=new GraphicMethods();
-	
+	public GraphicMethods graphicM = new GraphicMethods();
+
 	public OfferViewController()
-    {
-    	
-    }
-	
-	public SafeProxyAccount getSafeAccount() 
+	{
+
+	}
+
+	public SafeProxyAccount getSafeAccount()
 	{
 		return safeAccount;
 	}
-	
-	public void setSafeAccount(SafeProxyAccount safeAccount) 
+
+	public void setSafeAccount(SafeProxyAccount safeAccount)
 	{
 		this.safeAccount = safeAccount;
 	}
-	
-	public void setImageView(String uri) 
+
+	public void setImageView(String uri)
 	{
-		Image image = new Image(uri,417,398,false, false);
+		Image image = new Image(uri, 417, 398, false, false);
 		imageView = new ImageView();
 		imageView.setImage(image);
 	}
-	
+
 	public void setView()
 	{
 		graphicM.isLoggedin(safeAccount, buttonLogout, accordion);
-		imageView.setImage(new Image("/ui/images/mypic.jpg",412,393,false, false));
+		imageView.setImage(new Image("/ui/images/mypic.jpg", 412, 393, false, false));
 		pictureLabel.setGraphic(imageView);
 	}
-	
+
 	@FXML
-    private void reserve(ActionEvent event)
+	private void reserve(ActionEvent event)
 	{
-		
+
 	}
-	
+
 	@FXML
-    private void login(ActionEvent event)
+	private void login(ActionEvent event)
 	{
-		graphicM.login(safeAccount,buttonLogout,accordion,usernameField,passwordField);
+		graphicM.login(safeAccount, buttonLogout, accordion, usernameField, passwordField);
 	}
-	
+
 	@FXML
-    private void logout(ActionEvent event)
+	private void logout(ActionEvent event)
 	{
-		graphicM.logout(safeAccount,buttonLogout,accordion);
+		graphicM.logout(safeAccount, buttonLogout, accordion);
 	}
 
 }

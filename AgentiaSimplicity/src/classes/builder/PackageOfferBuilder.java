@@ -1,35 +1,34 @@
 package classes.builder;
 
 import classes.model.Hotel;
-import classes.model.Rooms;
+import classes.model.ERoomType;
 
 public class PackageOfferBuilder implements IPackageOfferBuilder
 {
-
 	PackageOffer packageOffer = new PackageOffer();
 
 	@Override
-	public PackageOffer getPackageOffer() 
+	public PackageOffer getPackageOffer()
 	{
 		return this.packageOffer;
 	}
 
 	@Override
-	public void setRoom(Rooms room) 
+	public void setRoomType(ERoomType roomType)
 	{
-		packageOffer.setRoom(room);
+		packageOffer.setRoom(roomType);
 	}
 
 	@Override
-	public void setHotel(Hotel hotel) 
+	public void setHotel(Hotel hotel)
 	{
-		packageOffer.setHotel(hotel); 
+		packageOffer.setHotel(hotel);
 	}
 
 	@Override
 	public void setPrice(int price)
 	{
-		packageOffer.setPrice(price); 
-	} 
+		packageOffer.setPrice(price);
+	}
 
 }

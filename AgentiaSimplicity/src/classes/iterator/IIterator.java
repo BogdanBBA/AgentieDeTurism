@@ -2,9 +2,11 @@ package classes.iterator;
 
 import classes.AgencyResource;
 
-public interface IEnumerator
+public interface IIterator
 {
 	AgencyResource current();
+
 	boolean moveNext();
+
 	void reset();
 }

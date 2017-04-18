@@ -16,16 +16,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.stage.Stage;
 
-public class GraphicMethods 
+public class GraphicMethods
 {
 	public void closeStage(ActionEvent event)
 	{
 		final Node source = (Node) event.getSource();
-	    final Stage stage = (Stage) source.getScene().getWindow();
-	    stage.close();
+		final Stage stage = (Stage) source.getScene().getWindow();
+		stage.close();
 	}
-	
-	public void showAlert(String headerText,String message)
+
+	public void showAlert(String headerText, String message)
 	{
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("Error Dialog");
@@ -33,47 +33,45 @@ public class GraphicMethods
 		alert.setContentText(message);
 		alert.showAndWait();
 	}
-	
-	public void loadStage(String resource,int width,int height) throws Exception
+
+	public void loadStage(String resource, int width, int height) throws Exception
 	{
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(resource));
 		Parent root = fxmlLoader.load();
-		Scene scene = new Scene(root,width,height);
+		Scene scene = new Scene(root, width, height);
 		scene.getStylesheets().add(getClass().getResource("/graphic/myApp2.css").toExternalForm());
-		Stage primaryStage=new Stage();
+		Stage primaryStage = new Stage();
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
 	}
-	
-	public void isLoggedin(SafeProxyAccount safeAccount,Button buttonLogout,Accordion accordion)
+
+	public void isLoggedin(SafeProxyAccount safeAccount, Button buttonLogout, Accordion accordion)
 	{
-		if(safeAccount==null)
+		if (safeAccount == null)
 		{
 			accordion.setVisible(true);
 			buttonLogout.setVisible(false);
-		}
-		else
+		} else
 		{
 			accordion.setVisible(false);
 			buttonLogout.setVisible(true);
 		}
 	}
-	
-	public void login(SafeProxyAccount safeAccount,Button buttonLogout,Accordion accordion,TextField usernameField,PasswordField passwordField)
-	{
-		String username=usernameField.getText();
-		String password=passwordField.getText();
 
-		User user=new User(username,password);
-		safeAccount=new SafeProxyAccount(user);
-		
-		if(!safeAccount.login(user))
+	public void login(SafeProxyAccount safeAccount, Button buttonLogout, Accordion accordion, TextField usernameField, PasswordField passwordField)
+	{
+		String username = usernameField.getText();
+		String password = passwordField.getText();
+
+		User user = new User(username, password);
+		safeAccount = new SafeProxyAccount(user);
+
+		if (!safeAccount.login(user))
 		{
-			safeAccount=null;
+			safeAccount = null;
 			showAlert("Login failed", "There is a problem with your username/password. Please try again");
-		}
-		else
+		} else
 		{
 			usernameField.setText("");
 			passwordField.setText("");
@@ -81,14 +79,13 @@ public class GraphicMethods
 			buttonLogout.setVisible(true);
 		}
 	}
-	
-	public void logout(SafeProxyAccount safeAccount,Button buttonLogout,Accordion accordion)
+
+	public void logout(SafeProxyAccount safeAccount, Button buttonLogout, Accordion accordion)
 	{
 		buttonLogout.setVisible(false);
-		safeAccount=null;
+		safeAccount = null;
 		accordion.setVisible(true);
 		accordion.getExpandedPane().setExpanded(false);
 	}
-	
 
 }
