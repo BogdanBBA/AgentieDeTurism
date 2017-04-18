@@ -1,6 +1,8 @@
 package classes.model;
 
-public class User
+import classes.AgencyResource;
+
+public class User implements AgencyResource
 {
 	private String username;
 	private String password;

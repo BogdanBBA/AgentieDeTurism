@@ -2,6 +2,9 @@ package classes.iterator;
 
 import classes.AgencyResource;
 
+/**
+ * Provides a simple (ascending, consecutive) iterator to be used to iterate across {@link AgencyResource} objects.
+ */
 public class StandardIterator implements IIterator
 {
 	private final StandardIterable iterable;
