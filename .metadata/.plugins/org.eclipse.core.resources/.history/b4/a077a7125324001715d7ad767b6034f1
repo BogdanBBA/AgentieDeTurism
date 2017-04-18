@@ -1,0 +1,25 @@
+package classes.decorator;
+
+public class UltraAllInclusivePackageOfferDecorator extends AllInclusivePackageOfferDecorator
+{
+
+	public UltraAllInclusivePackageOfferDecorator(IPackageLevel level) 
+	{
+		super(level);
+		level.setType(EPackageType.UltraAllIncusive);
+	}
+
+	
+	@Override
+	public void Assemble()
+	{
+		super.Assemble();
+		
+		setBenefits(EBenefitsType.AllInclusiveType, "Bar all inclusive - cocktail-uri.", 500);
+		setBenefits(EBenefitsType.AllInclusiveType, "Gustari intre orele 15:00 - 17:00 (produse de patiserie si inghetata).", 500);
+		setBenefits(EBenefitsType.AllInclusiveType, "Snacks intre orele 10:00 - 23:00", 500);
+		setBenefits(EBenefitsType.AllInclusiveType, "Acces la sala de fitness.", 500);
+		
+	}
+	
+}

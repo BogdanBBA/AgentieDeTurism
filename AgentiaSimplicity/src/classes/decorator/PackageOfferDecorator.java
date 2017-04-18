@@ -25,6 +25,8 @@ public abstract class PackageOfferDecorator implements IPackageLevel
 	public PackageOfferDecorator(IPackageLevel level) 
 	{
 		this.myPackageOffer=level;
+		
+		
 	}
 	
 	

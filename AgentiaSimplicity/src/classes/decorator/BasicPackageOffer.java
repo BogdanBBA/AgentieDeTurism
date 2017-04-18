@@ -103,8 +103,11 @@ public class BasicPackageOffer implements IPackageLevel
 	@Override
 	public void Assemble() 
 	{
-		BasicPackageOfferBenefits.add("mic dejun inclus");
 		price = 1000;
+		
+		BasicPackageOfferBenefits.add("Mic dejun inclus - bufet suedez.");
+		BasicPackageOfferBenefits.add("Bar - bauturi alcoolice si racoritoare din productie indigena(bere, vin alb/rosu, bauturi spirtoase)");
+		
 	}
 
 	@Override
