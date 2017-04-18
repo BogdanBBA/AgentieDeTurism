@@ -1,5 +1,7 @@
 package ui;
 
+import java.io.IOException;
+
 import classes.model.User;
 import classes.proxy.SafeProxyAccount;
 import javafx.event.ActionEvent;
@@ -14,64 +16,91 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import ui.controller.MainViewController;
+import ui.controller.MyAlertViewController;
 
-public class GraphicMethods
+public class GraphicMethods 
 {
 	public void closeStage(ActionEvent event)
 	{
 		final Node source = (Node) event.getSource();
-		final Stage stage = (Stage) source.getScene().getWindow();
-		stage.close();
+	    final Stage stage = (Stage) source.getScene().getWindow();
+	    stage.close();
 	}
-
-	public void showAlert(String headerText, String message)
+	
+	public void showMyAlert(String header,String message)
 	{
-		Alert alert = new Alert(AlertType.ERROR);
-		alert.setTitle("Error Dialog");
-		alert.setHeaderText(headerText);
-		alert.setContentText(message);
-		alert.showAndWait();
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ui/view/MyAlertView.fxml"));
+		Parent root;
+		try 
+		{
+			root = (Parent)fxmlLoader.load();
+			MyAlertViewController controller = fxmlLoader.<MyAlertViewController>getController();
+			controller.setTexts(header, message);
+	        Scene scene = new Scene(root,300,300);
+			scene.getStylesheets().add(getClass().getResource("/ui/style/style.css").toExternalForm());
+			Stage stage=new Stage();
+			stage.setScene(scene);
+			stage.setResizable(false);
+			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.show();
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
 	}
-
-	public void loadStage(String resource, int width, int height) throws Exception
+	
+	public void loadMainStage(Stage primaryStage)
 	{
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(resource));
-		Parent root = fxmlLoader.load();
-		Scene scene = new Scene(root, width, height);
-		scene.getStylesheets().add(getClass().getResource("/graphic/myApp2.css").toExternalForm());
-		Stage primaryStage = new Stage();
-		primaryStage.setScene(scene);
-		primaryStage.show();
+		try 
+		{
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ui/view/MainView.fxml"));
+			Parent root = (Parent)fxmlLoader.load();
+			MainViewController controller = fxmlLoader.<MainViewController>getController();
+			controller.initialize();
+	        Scene scene = new Scene(root,1024,768);
+			scene.getStylesheets().add(getClass().getResource("/ui/style/style.css").toExternalForm());
+			primaryStage.setScene(scene);
+			primaryStage.show();
+		} 
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 
 	}
-
-	public void isLoggedin(SafeProxyAccount safeAccount, Button buttonLogout, Accordion accordion)
+	
+	public void isLoggedin(SafeProxyAccount safeAccount,Button buttonLogout,Accordion accordion)
 	{
-		if (safeAccount == null)
+		if(safeAccount==null)
 		{
 			accordion.setVisible(true);
 			buttonLogout.setVisible(false);
-		} else
+		}
+		else
 		{
 			accordion.setVisible(false);
 			buttonLogout.setVisible(true);
 		}
 	}
-
-	public void login(SafeProxyAccount safeAccount, Button buttonLogout, Accordion accordion, TextField usernameField, PasswordField passwordField)
+	
+	public void login(SafeProxyAccount safeAccount,Button buttonLogout,Accordion accordion,TextField usernameField,PasswordField passwordField)
 	{
-		String username = usernameField.getText();
-		String password = passwordField.getText();
+		String username=usernameField.getText();
+		String password=passwordField.getText();
 
-		User user = new User(username, password);
-		safeAccount = new SafeProxyAccount(user);
-
-		if (!safeAccount.login(user))
+		User user=new User(username,password);
+		safeAccount=new SafeProxyAccount(user);
+		
+		if(!safeAccount.login(user))
 		{
-			safeAccount = null;
-			showAlert("Login failed", "There is a problem with your username/password. Please try again");
-		} else
+			safeAccount=null;
+			showMyAlert("Login failed!", "  Username or password is wrong. Please try again");
+		}
+		else
 		{
 			usernameField.setText("");
 			passwordField.setText("");
@@ -79,13 +108,14 @@ public class GraphicMethods
 			buttonLogout.setVisible(true);
 		}
 	}
-
-	public void logout(SafeProxyAccount safeAccount, Button buttonLogout, Accordion accordion)
+	
+	public void logout(SafeProxyAccount safeAccount,Button buttonLogout,Accordion accordion)
 	{
 		buttonLogout.setVisible(false);
-		safeAccount = null;
+		safeAccount=null;
 		accordion.setVisible(true);
 		accordion.getExpandedPane().setExpanded(false);
 	}
+	
 
 }

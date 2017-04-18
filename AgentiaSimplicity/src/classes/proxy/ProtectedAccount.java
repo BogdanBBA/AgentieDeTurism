@@ -1,6 +1,7 @@
 package classes.proxy;
 
 import classes.model.User;
+import classes.model.User;
 import classes.Database;
 import classes.iterator.IIterator;
 import classes.iterator.StandardIterable;
@@ -8,24 +9,36 @@ import classes.iterator.StandardIterable;
 public class ProtectedAccount implements IAccount
 {
 	private boolean isLoggedIn;
-
+	private User user;
+	
+	
 	public ProtectedAccount()
 	{
-		isLoggedIn = false;
+		isLoggedIn=false;
+	}
+
+	public User getUser() 
+	{
+		return user;
+	}
+
+	public void setUser(User user) 
+	{
+		this.user = user;
 	}
 
 	@Override
-	public boolean reserve(User user)
+	public boolean reserve() 
 	{
-		if (isLoggedIn)
+		if(getUser()!=null)
 			return true;
 		return false;
 	}
 
 	@Override
-	public boolean makePayment(User user)
+	public boolean makePayment(User user) 
 	{
-		if (isLoggedIn)
+		if(isLoggedIn)
 			return true;
 		return false;
 	}
@@ -37,7 +50,7 @@ public class ProtectedAccount implements IAccount
 		while (iterator.moveNext())
 			if (user.equals(iterator.current()))
 			{
-				isLoggedIn = true;
+				setUser(user);
 				return true;
 			}
 		return false;

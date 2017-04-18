@@ -62,18 +62,23 @@
   -fx-border-color:  #008080;
   -fx-text-fill: white;
 }
-.scroll-pane .track{
+.scroll-pane .track,.text-area .track{
 	-fx-background-color:white; 
 }
-.scroll-pane .thumb{
+.scroll-pane .thumb,.text-area .thumb{
 	-fx-background-color:#336699; 
 }
-.scroll-pane .increment-button ,.scroll-pane .decrement-button {
+.scroll-pane .increment-button ,.scroll-pane .decrement-button,.text-area .increment-button ,.text-area .decrement-button {
 	-fx-background-color: #336699;
 }
-.scroll-pane .increment-arrow,.scroll-pane .decrement-arrow{
+.scroll-pane .increment-arrow,.scroll-pane .decrement-arrow,.text-area .increment-arrow,.scroll-pane .decrement-arrow{
     -fx-background-color: white;
 }
 .scroll-pane {
     -fx-background-color:transparent;
+}
+.text-area {
+  -fx-text-fill: #336699;
+  -fx-font-size:13px;
+  -fx-font-weight: bold;
 }

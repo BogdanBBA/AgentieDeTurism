@@ -33,6 +33,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import ui.GraphicMethods;
 
+
 public class MainViewController
 {
 	@FXML
@@ -47,8 +48,6 @@ public class MainViewController
 	private Button buttonLogin;
 	@FXML
 	private Button buttonSearch;
-	@FXML
-	private ComboBox<String> roomCombo;
 	@FXML
 	private ComboBox<String> accomodationCombo;
 	@FXML
@@ -67,151 +66,134 @@ public class MainViewController
 	private Label noResultLabel;
 	@FXML
 	private VBox v;
-
-	private Stage primaryStage = new Stage();
+	
+	private Stage primaryStage=new Stage();
 	private SafeProxyAccount safeAccount;
-	public GraphicMethods graphicM = new GraphicMethods();
-	List<Button> buttons = new ArrayList<Button>();
-	private ObservableList<String> rooms = FXCollections.observableArrayList("Single room", "Double room", "Apartment");
-	private ObservableList<String> accomodations = FXCollections.observableArrayList("Hotel", "Motel", "Inns", "Guesthouse");
-	private String chosenRoom;
+	public GraphicMethods graphicM=new GraphicMethods();
+	List<Button> buttons=new ArrayList<Button>();
+	private ObservableList<String> accomodations = FXCollections.observableArrayList("Hotel","Motel","Inns","Guesthouse");
 	private String chosenAccomodation;
 
 	public void setSafeAccount(SafeProxyAccount safeAcc)
 	{
-		this.safeAccount = safeAcc;
+		this.safeAccount=safeAcc;
 	}
-
-	public void initializeListOfOffers(VBox v, ScrollPane scrollPane)
+	
+	public void initializeListOfOffers(VBox v,ScrollPane scrollPane)
 	{
-
-		for (int i = 0; i < 7; i++)
+		
+		for(int i=0;i<7;i++)
 		{
-			String uri = "/ui/images/logo" + i + ".png";
+			String uri="/ui/images/logo"+i+".png";
 			Image image = new Image(uri);
 			ImageView imageView = new ImageView();
 			imageView.setImage(image);
-			Button button = new Button("I love you", imageView);
-			button.setText("Button" + i);
-			button.setId(i + "");
+			Button button=new Button("I love you", imageView);
+			button.setText("Button"+i);
+			button.setId(i+"");
 			button.setContentDisplay(ContentDisplay.TOP);
-			button.setOnAction(new EventHandler<ActionEvent>()
+			button.setOnAction(new EventHandler<ActionEvent>() 
 			{
 				@Override
-				public void handle(ActionEvent event)
+				public void handle(ActionEvent event) 
 				{
-					FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ui/view/OfferView.fxml"));
-					Parent root;
-					try
+		        	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ui/view/OfferView.fxml"));
+		  			Parent root;
+					try 
 					{
-						root = (Parent) fxmlLoader.load();
+						root = (Parent)fxmlLoader.load();
 						OfferViewController controller = fxmlLoader.<OfferViewController>getController();
 						controller.setImageView(uri);
-						controller.setView();
-						Scene scene = new Scene(root, 1024, 768);
-						scene.getStylesheets().add(getClass().getResource("/ui/style/style.css").toExternalForm());
-						primaryStage.setScene(scene);
-						primaryStage.show();
-						graphicM.closeStage(event);
-
-					} catch (IOException e)
+						controller.setSafeAccount(safeAccount);
+		  				controller.setView();
+		  				Scene scene = new Scene(root,1024,768);
+		  				scene.getStylesheets().add(getClass().getResource("/ui/style/style.css").toExternalForm());
+		  				primaryStage.setScene(scene);
+		  				primaryStage.show();
+		  				graphicM.closeStage(event);
+			  				
+					} 
+					catch (IOException e) 
 					{
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
-			});
-
+	        });
+			
 			button.setMinWidth(v.getPrefWidth());
 			v.getChildren().add(button);
 			buttons.add(button);
 		}
-
+		
 	}
-
-	public void initializeComboBoxes()
+	
+	public void initializeComboBox()
 	{
-		roomCombo.setItems(rooms);
 		accomodationCombo.setItems(accomodations);
-
-		roomCombo.setPromptText("Choose room type");
-		roomCombo.setOnAction((ActionEvent ev) ->
-		{
-			chosenRoom = roomCombo.getSelectionModel().getSelectedItem().toString();
-		});
-
-		accomodationCombo.setPromptText("Choose accomodation type");
-		accomodationCombo.setOnAction((ActionEvent ev) ->
-		{
-			chosenAccomodation = accomodationCombo.getSelectionModel().getSelectedItem().toString();
+		
+		accomodationCombo.setPromptText("Choose accomodation type");        
+		accomodationCombo.setOnAction((ActionEvent ev) -> {
+			chosenAccomodation =  accomodationCombo.getSelectionModel().getSelectedItem().toString();    
 		});
 	}
-
+	
 	public void initialize()
 	{
-		// safeAccount=new SafeProxyAccount(new User("alina","12"));
 		graphicM.isLoggedin(safeAccount, buttonLogout, accordion);
-		initializeComboBoxes();
+		initializeComboBox();
 		v = new VBox();
-
-		// Button b = new Button("add");
-		// b.setOnAction(ev -> v.getChildren().add(new Label("Test")));
-		v.setAlignment(Pos.TOP_RIGHT);
-		v.setSpacing(20);
-		v.setPrefSize(640, 671);
-		leftPane.setPrefWidth(1024 - 955);
-		ScrollPane scrollPane = new ScrollPane(v);
-
-		scrollPane.setFitToHeight(true);
-		scrollPane.setMaxWidth(655);
-		initializeListOfOffers(v, scrollPane);
-		border.setCenter(scrollPane);
-		// border.setBottom(b);
-
-		/*
-		 * VBox hbox = new VBox(); List<Button> l=new ArrayList<Button>(); for(int i=0;i<20;i++) hbox.getChildren().add(new Button()); scroll.setContent(hbox);
-		 * 
-		 * HBox hbox = new HBox(); border.setTop(hbox); hbox.setPadding(new Insets(5, 5, 5, 5)); Image image = new Image("/images/logo.png"); ImageView imageView = new ImageView(); imageView.setImage(image); Button buttonCurrent = new
-		 * Button("Log in"); hbox.getChildren().add(buttonCurrent); buttonCurrent.setPrefSize(120, 60); VBox vbox = new VBox(); hbox.setAlignment(Pos.BOTTOM_RIGHT); vbox.getChildren().add(imageView); hbox.getChildren().add(vbox);
-		 * vbox.setStyle("-fx-background-color:blue;"); hbox.setPrefHeight(60);
-		 * 
-		 * HBox hBox=new HBox(); hBox.getChildren().add(imageView); hBox.setAlignment(Pos.BASELINE_LEFT); hBox.setPadding(new Insets(0, 0, 5, 20)); border.getChildren().add(hBox);
-		 */
-
+		
+		//Button b = new Button("add");
+	    //b.setOnAction(ev -> v.getChildren().add(new Label("Test")));
+	    v.setAlignment(Pos.TOP_RIGHT);
+	    v.setSpacing(20);
+	    v.setPrefSize(640, 671);
+	    leftPane.setPrefWidth(1024-955);
+	    ScrollPane scrollPane = new ScrollPane(v);
+	    
+	    scrollPane.setFitToHeight(true);
+	    scrollPane.setMaxWidth(655);
+	    initializeListOfOffers(v,scrollPane);
+	    border.setCenter(scrollPane);
+	    //border.setBottom(b);		
 	}
-
+	
+	
 	@FXML
-	private void search(ActionEvent event)
+    private void search(ActionEvent event)
 	{
-		String result = "";
-		String destination = destinationField.getText();
+		String result="";
+		String destination=destinationField.getText();
 		LocalDate inDate = checkinPicker.getValue();
 		LocalDate outDate = checkoutPicker.getValue();
-
-		if (destination.isEmpty() && inDate == null && outDate == null && chosenRoom == null && chosenAccomodation == null)
-			noResultLabel.setText("There's no criteria for searching");
+		
+		
+		if(destination.isEmpty() && inDate==null && outDate==null && chosenAccomodation==null)
+		{
+			graphicM.showMyAlert("No search criteria!", "  Please enter the criteria needed for search.");
+		}
 		else
 		{
-			if (result.isEmpty())
-				noResultLabel.setText("No result.Please try changing the criteria for searching");
+			if(result.isEmpty())
+				graphicM.showMyAlert("No search result!", "  Please change the criteria for search and try again.");
 			else
 			{
 				v.getChildren().clear();
-				for (int i = 0; i < 4; i++)
+				for(int i=0;i<4;i++)
 					v.getChildren().add(buttons.get(i));
 			}
 		}
 	}
-
+	
 	@FXML
-	private void login(ActionEvent event)
+    private void login(ActionEvent event)
 	{
-		graphicM.login(safeAccount, buttonLogout, accordion, usernameField, passwordField);
+		graphicM.login(safeAccount,buttonLogout,accordion,usernameField,passwordField);	
 	}
-
+	
 	@FXML
-	private void logout(ActionEvent event)
+    private void logout(ActionEvent event)
 	{
-		graphicM.logout(safeAccount, buttonLogout, accordion);
+		graphicM.logout(safeAccount,buttonLogout,accordion);
 	}
 }

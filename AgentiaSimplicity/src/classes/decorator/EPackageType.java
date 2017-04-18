@@ -1,6 +1,8 @@
 package classes.decorator;
 
-public enum EPackageType
+public enum EPackageType 
 {
-	Basic, AllInclusive, UltraAllIncusive,
+	Basic,
+	AllInclusive,
+	UltraAllIncusive,
 }

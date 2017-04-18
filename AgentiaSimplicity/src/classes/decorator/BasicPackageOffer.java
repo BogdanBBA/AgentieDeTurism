@@ -2,38 +2,41 @@ package classes.decorator;
 
 public class BasicPackageOffer implements IPackageLevel
 {
-	private EPackageType type;
 
+	private EPackageType type;
+	
 	@Override
-	public EPackageType getType()
+	public EPackageType GetType() 
 	{
 		return type;
 	}
 
 	@Override
-	public void setType()
+	public void SetType() 
 	{
 		type = EPackageType.Basic;
 	}
 
 	@Override
-	public void setBenefits(EBenefitsType type, String name, int price)
+	public void setBenefits(EBenefitsType type, String name, int price) 
 	{
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	public void assemble()
+	public void Assemble() 
 	{
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	public void display()
-	{
+	public void Display()
+		  {
 		// TODO Auto-generated method stub
-
+		
 	}
+	
+	
 }

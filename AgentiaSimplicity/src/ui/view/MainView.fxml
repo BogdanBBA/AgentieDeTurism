@@ -60,11 +60,6 @@
                               <Font name="System Bold" size="14.0" />
                            </font></Label>
                         <ComboBox fx:id="accomodationCombo" prefHeight="25.0" prefWidth="286.0" />
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="263.0" text="Room type" textFill="#336699">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font></Label>
-                        <ComboBox fx:id="roomCombo" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="286.0" />
                         <Label fx:id="noResultLabel" alignment="CENTER" prefHeight="17.0" prefWidth="300.0" textFill="#9e0303">
                            <font>
                               <Font name="System Bold" size="18.0" />

@@ -27,24 +27,23 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
+                  <Button fx:id="buttonBack" layoutX="682.0" layoutY="11.0" mnemonicParsing="false" onAction="#back" prefHeight="47.0" prefWidth="70.0" text="Back" textFill="#fcfcfc" AnchorPane.rightAnchor="272.0" AnchorPane.topAnchor="11.0">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></Button>
                </children>
             </AnchorPane>
          </top>
          <right>
             <AnchorPane prefHeight="671.0" prefWidth="300.0" BorderPane.alignment="CENTER">
                <children>
-                  <VBox alignment="CENTER" layoutX="102.0" prefHeight="700.0" prefWidth="260.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                  <VBox alignment="CENTER" layoutX="102.0" prefHeight="700.0" prefWidth="260.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="35.0" prefWidth="300.0" text="Make reservation" textFill="#336699">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="20.0" prefWidth="302.0" text="Price without extra facilities" textFill="#336699">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font></Label>
-                        <TextField fx:id="priceField" editable="false" maxWidth="286.0" />
                         <Label alignment="CENTER" prefHeight="20.0" prefWidth="300.0" text="Check-in date" textFill="#336699">
                            <font>
                               <Font name="System Bold" size="14.0" />
@@ -55,46 +54,29 @@
                               <Font name="System Bold" size="14.0" />
                            </font></Label>
                         <DatePicker fx:id="checkoutPicker" prefHeight="25.0" prefWidth="286.0" />
+                        <Label alignment="CENTER" prefWidth="286.0" text="Room type" textFill="#336699">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="roomCombo" prefWidth="286.0" />
                         <Label alignment="CENTER" prefHeight="20.0" prefWidth="303.0" text="Extra facilities" textFill="#336699">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font></Label>
-                        <CheckBox layoutX="10.0" layoutY="336.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="286.0" text="CheckBox" textFill="TEAL">
+                        <ComboBox fx:id="facilitiesCombo" prefWidth="286.0" />
+                        <Label alignment="CENTER" prefWidth="286.0" text="Travelling type" textFill="#336699">
                            <font>
-                              <Font name="System Bold" size="12.0" />
+                              <Font name="System Bold" size="14.0" />
                            </font>
-                        </CheckBox>
-                        <CheckBox layoutX="10.0" layoutY="336.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="286.0" text="CheckBox" textFill="TEAL">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </CheckBox>
-                        <CheckBox layoutX="10.0" layoutY="280.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="286.0" text="CheckBox" textFill="TEAL">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </CheckBox>
-                        <CheckBox layoutX="10.0" layoutY="334.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="286.0" text="CheckBox" textFill="TEAL">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </CheckBox>
-                        <CheckBox layoutX="10.0" layoutY="280.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="286.0" text="CheckBox" textFill="TEAL">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </CheckBox>
-                        <CheckBox mnemonicParsing="false" prefHeight="17.0" prefWidth="286.0" text="CheckBox" textFill="TEAL">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </CheckBox>
-                        <Label alignment="CENTER" prefHeight="20.0" prefWidth="303.0" text="Price with extra facilities" textFill="#336699">
+                        </Label>
+                        <ComboBox fx:id="travelCombo" prefWidth="286.0" />
+                        <Label alignment="CENTER" prefHeight="20.0" prefWidth="303.0" text="Price " textFill="#336699">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font></Label>
-                        <TextField fx:id="priceFacilitiesField" alignment="CENTER" editable="false" maxWidth="286.0" />
-                        <Button fx:id="buttonCalculatePrice" mnemonicParsing="false" prefHeight="25.0" prefWidth="286.0" text="Calculate price with facilities" textFill="#fcfcfc">
+                        <TextField fx:id="priceField" alignment="CENTER" editable="false" maxWidth="286.0" />
+                        <Button fx:id="buttonCalculatePrice" mnemonicParsing="false" onAction="#calculatePrice" prefHeight="25.0" prefWidth="286.0" text="Calculate price" textFill="#fcfcfc">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
