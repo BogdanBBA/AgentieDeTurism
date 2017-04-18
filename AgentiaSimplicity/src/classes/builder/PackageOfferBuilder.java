@@ -1,6 +1,7 @@
 package classes.builder;
 
 import classes.model.Hotel;
+import classes.strategy.TravelContext;
 import classes.decorator.IPackageLevel;
 import classes.model.ERoomType;
 
@@ -37,5 +38,13 @@ public class PackageOfferBuilder implements IPackageOfferBuilder
 	{
 		packageOffer.setPackageLevel(packageLevel);
 	}
+
+	@Override
+	public void setTravelContext(TravelContext travelContext) 
+	{
+		packageOffer.setTravelContext(travelContext);
+	}
+
+	
 
 }

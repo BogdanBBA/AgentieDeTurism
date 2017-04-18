@@ -5,6 +5,8 @@ import classes.decorator.BasicPackageOffer;
 import classes.decorator.PackageOfferDecorator;
 import classes.model.City;
 import classes.model.Hotel;
+import classes.strategy.TravelByPlane;
+import classes.strategy.TravelContext;
 import classes.model.ERoomType;
 
 public class testBuilder
@@ -22,8 +24,10 @@ public class testBuilder
 		
 		PackageOfferDecorator allInclusiveDecorator = new AllInclusivePackageOfferDecorator(new BasicPackageOffer());
 		
+		TravelContext travelContext=new TravelContext(new TravelByPlane());
+		
 		// de adaugat strategy
-		agent.Construct(room, hotel, allInclusiveDecorator, 100);
+		agent.Construct(room, hotel, allInclusiveDecorator,travelContext,100);
 	
 		agent.GetResult().getPackageLevel().Display();
 

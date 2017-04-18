@@ -2,9 +2,9 @@ package classes.strategy;
 
 public class TravelContext 
 {
-	private TravelStrategy strategy;
+	private ITravelStrategy strategy;
 	
-	public TravelContext(TravelStrategy strategy)
+	public TravelContext(ITravelStrategy strategy)
 	{
 		this.strategy=strategy;
 	}
@@ -12,5 +12,10 @@ public class TravelContext
 	public int executeStrategy()
 	{
 	      return strategy.calculateTravelCost();
+	}
+	
+	public String getType()
+	{
+		return this.strategy.getType();
 	}
 }

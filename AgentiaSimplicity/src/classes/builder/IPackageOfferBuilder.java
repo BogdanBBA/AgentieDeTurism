@@ -1,6 +1,7 @@
 package classes.builder;
 
 import classes.model.Hotel;
+import classes.strategy.TravelContext;
 import classes.decorator.IPackageLevel;
 import classes.model.ERoomType;
 
@@ -9,6 +10,8 @@ public interface IPackageOfferBuilder
 	PackageOffer getPackageOffer();
 
 	void setPackageLevel(IPackageLevel packageLevel);
+	
+	void setTravelContext(TravelContext travelContext);
 	
 	void setRoomType(ERoomType room);
 

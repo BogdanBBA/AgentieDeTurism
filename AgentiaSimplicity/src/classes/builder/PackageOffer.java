@@ -1,6 +1,7 @@
 package classes.builder;
 
 import classes.model.Hotel;
+import classes.strategy.TravelContext;
 import classes.decorator.IPackageLevel;
 import classes.model.ERoomType;
 
@@ -8,8 +9,20 @@ public class PackageOffer
 {
 	private ERoomType roomType;
 	private Hotel hotel;
-	private int price;
 	private IPackageLevel packageLevel;
+	private TravelContext travelContext;
+	private int price;
+	
+
+	public TravelContext getTravelContext() 
+	{
+		return this.travelContext;
+	}
+
+	public void setTravelContext(TravelContext travelContext) 
+	{
+		this.travelContext = travelContext;
+	}
 
 	public IPackageLevel getPackageLevel() 
 	{
@@ -54,9 +67,11 @@ public class PackageOffer
 
 	@Override
 	public String toString() {
-		return "PackageOffer [roomType=" + roomType + ", hotel=" + hotel + ", price=" + price + ", packageLevel="
-				+ packageLevel.getType() + "]";
+		return "PackageOffer [roomType=" + roomType + ", hotel=" + hotel + ", packageLevel=" + packageLevel.getType()
+				+ ", travelContext=" + travelContext.getType()+ ",Travel price ="+travelContext.executeStrategy()+ ", price=" + price + "]";
 	}
+
+
 
 	
 	
