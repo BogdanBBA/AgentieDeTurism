@@ -6,12 +6,15 @@
 	<Cities>
 		<City ID="1" name="Brasov, Romania" />
 		<City ID="2" name="Sibiu, Romania" />
-		<City ID="3" name="Athena, Greece" />
+		<City ID="3" name="Thassos, Greece" />
 		<City ID="4" name="Paris, France" />
+		<City ID="5" name="Krakow, Poland" />
 	</Cities>
 	<Hotels>
-		<Hotel ID="1" name="Aro Palace" cityID="1" />
-		<Hotel ID="2" name="Memo" cityID="1" />
-		<Hotel ID="3" name="Nicu Klein" cityID="2" />
+		<Hotel ID="1" name="Cămin Memo" cityID="1" />
+		<Hotel ID="2" name="Pensiune Nicu Klein" cityID="2" />
+		<Hotel ID="3" name="Hotel Aro Palace" cityID="1" />
+		<Hotel ID="4" name="Hotel Europejski" cityID="5" />
+		<Hotel ID="5" name="Hotel Aethria" cityID="3" />
 	</Hotels>
 </Simplicity>

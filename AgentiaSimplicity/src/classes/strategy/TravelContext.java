@@ -1,19 +1,19 @@
 package classes.strategy;
 
-public class TravelContext 
+public class TravelContext
 {
 	private ITravelStrategy strategy;
-	
+
 	public TravelContext(ITravelStrategy strategy)
 	{
-		this.strategy=strategy;
+		this.strategy = strategy;
 	}
-	
+
 	public int executeStrategy()
 	{
-	      return strategy.calculateTravelCost();
+		return strategy.calculateTravelCost();
 	}
-	
+
 	public String getType()
 	{
 		return this.strategy.getType();

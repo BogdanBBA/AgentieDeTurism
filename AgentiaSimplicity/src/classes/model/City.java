@@ -4,8 +4,8 @@ import classes.AgencyResource;
 
 public class City implements AgencyResource
 {
-	public int id;
-	public String name;
+	private int id;
+	private String name;
 
 	public City(int id, String name)
 	{

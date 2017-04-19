@@ -10,35 +10,34 @@ public class ProtectedAccount implements IAccount
 {
 	private boolean isLoggedIn;
 	private User user;
-	
-	
+
 	public ProtectedAccount()
 	{
-		isLoggedIn=false;
+		isLoggedIn = false;
 	}
 
-	public User getUser() 
+	public User getUser()
 	{
 		return user;
 	}
 
-	public void setUser(User user) 
+	public void setUser(User user)
 	{
 		this.user = user;
 	}
 
 	@Override
-	public boolean reserve() 
+	public boolean reserve()
 	{
-		if(getUser()!=null)
+		if (getUser() != null)
 			return true;
 		return false;
 	}
 
 	@Override
-	public boolean makePayment(User user) 
+	public boolean makePayment(User user)
 	{
-		if(isLoggedIn)
+		if (isLoggedIn)
 			return true;
 		return false;
 	}

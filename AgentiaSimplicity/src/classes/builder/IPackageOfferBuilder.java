@@ -10,9 +10,9 @@ public interface IPackageOfferBuilder
 	PackageOffer getPackageOffer();
 
 	void setPackageLevel(IPackageLevel packageLevel);
-	
+
 	void setTravelContext(TravelContext travelContext);
-	
+
 	void setRoomType(ERoomType room);
 
 	void setHotel(Hotel hotel);

@@ -12,24 +12,23 @@ public class PackageOffer
 	private IPackageLevel packageLevel;
 	private TravelContext travelContext;
 	private int price;
-	
 
-	public TravelContext getTravelContext() 
+	public TravelContext getTravelContext()
 	{
 		return this.travelContext;
 	}
 
-	public void setTravelContext(TravelContext travelContext) 
+	public void setTravelContext(TravelContext travelContext)
 	{
 		this.travelContext = travelContext;
 	}
 
-	public IPackageLevel getPackageLevel() 
+	public IPackageLevel getPackageLevel()
 	{
 		return packageLevel;
 	}
 
-	public void setPackageLevel(IPackageLevel packageLevel) 
+	public void setPackageLevel(IPackageLevel packageLevel)
 	{
 		this.packageLevel = packageLevel;
 		this.packageLevel.Assemble();
@@ -66,13 +65,10 @@ public class PackageOffer
 	}
 
 	@Override
-	public String toString() {
-		return "PackageOffer [roomType=" + roomType + ", hotel=" + hotel + ", packageLevel=" + packageLevel.getType()
-				+ ", travelContext=" + travelContext.getType()+ ",Travel price ="+travelContext.executeStrategy()+ ", price=" + price + "]";
+	public String toString()
+	{
+		return "PackageOffer [roomType=" + roomType + ", hotel=" + hotel + ", packageLevel=" + packageLevel.getType() + ", travelContext=" + travelContext.getType() + ",Travel price =" + travelContext.executeStrategy() + ", price=" + price
+				+ "]";
 	}
 
-
-
-	
-	
 }

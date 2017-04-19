@@ -21,86 +21,82 @@ import javafx.stage.Stage;
 import ui.controller.MainViewController;
 import ui.controller.MyAlertViewController;
 
-public class GraphicMethods 
+public class GraphicMethods
 {
 	public void closeStage(ActionEvent event)
 	{
 		final Node source = (Node) event.getSource();
-	    final Stage stage = (Stage) source.getScene().getWindow();
-	    stage.close();
+		final Stage stage = (Stage) source.getScene().getWindow();
+		stage.close();
 	}
-	
-	public void showMyAlert(String header,String message)
+
+	public void showMyAlert(String header, String message)
 	{
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ui/view/MyAlertView.fxml"));
 		Parent root;
-		try 
+		try
 		{
-			root = (Parent)fxmlLoader.load();
+			root = (Parent) fxmlLoader.load();
 			MyAlertViewController controller = fxmlLoader.<MyAlertViewController>getController();
 			controller.setTexts(header, message);
-	        Scene scene = new Scene(root,300,300);
+			Scene scene = new Scene(root, 300, 300);
 			scene.getStylesheets().add(getClass().getResource("/ui/style/style.css").toExternalForm());
-			Stage stage=new Stage();
+			Stage stage = new Stage();
 			stage.setScene(scene);
 			stage.setResizable(false);
 			stage.initModality(Modality.APPLICATION_MODAL);
 			stage.show();
-		} 
-		catch (IOException e) 
+		} catch (IOException e)
 		{
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void loadMainStage(Stage primaryStage)
 	{
-		try 
+		try
 		{
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ui/view/MainView.fxml"));
-			Parent root = (Parent)fxmlLoader.load();
+			Parent root = (Parent) fxmlLoader.load();
 			MainViewController controller = fxmlLoader.<MainViewController>getController();
 			controller.initialize();
-	        Scene scene = new Scene(root,1024,768);
+			Scene scene = new Scene(root, 1024, 768);
 			scene.getStylesheets().add(getClass().getResource("/ui/style/style.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
-		} 
-		catch(Exception e)
+		} catch (Exception e)
 		{
 			e.printStackTrace();
 		}
 
 	}
-	
-	public void isLoggedin(SafeProxyAccount safeAccount,Button buttonLogout,Accordion accordion)
+
+	public void isLoggedin(SafeProxyAccount safeAccount, Button buttonLogout, Accordion accordion)
 	{
-		if(safeAccount==null)
+		if (safeAccount == null)
 		{
 			accordion.setVisible(true);
 			buttonLogout.setVisible(false);
-		}
-		else
+		} else
 		{
 			accordion.setVisible(false);
 			buttonLogout.setVisible(true);
 		}
 	}
-	
-	public void login(SafeProxyAccount safeAccount,Button buttonLogout,Accordion accordion,TextField usernameField,PasswordField passwordField)
-	{
-		String username=usernameField.getText();
-		String password=passwordField.getText();
 
-		User user=new User(username,password);
-		safeAccount=new SafeProxyAccount(user);
-		
-		if(!safeAccount.login(user))
+	public void login(SafeProxyAccount safeAccount, Button buttonLogout, Accordion accordion, TextField usernameField, PasswordField passwordField)
+	{
+		String username = usernameField.getText();
+		String password = passwordField.getText();
+
+		User user = new User(username, password);
+		safeAccount = new SafeProxyAccount(user);
+
+		if (!safeAccount.login(user))
 		{
-			safeAccount=null;
+			safeAccount = null;
 			showMyAlert("Login failed!", "  Username or password is wrong. Please try again");
-		}
-		else
+		} else
 		{
 			usernameField.setText("");
 			passwordField.setText("");
@@ -108,14 +104,13 @@ public class GraphicMethods
 			buttonLogout.setVisible(true);
 		}
 	}
-	
-	public void logout(SafeProxyAccount safeAccount,Button buttonLogout,Accordion accordion)
+
+	public void logout(SafeProxyAccount safeAccount, Button buttonLogout, Accordion accordion)
 	{
 		buttonLogout.setVisible(false);
-		safeAccount=null;
+		safeAccount = null;
 		accordion.setVisible(true);
 		accordion.getExpandedPane().setExpanded(false);
 	}
-	
 
 }

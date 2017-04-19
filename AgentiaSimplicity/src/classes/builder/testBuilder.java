@@ -17,18 +17,18 @@ public class testBuilder
 		PackageOfferBuilderAgent agent = new PackageOfferBuilderAgent(builder);
 
 		City city = new City(1, "Brasov, Romania");
-		
+
 		Hotel hotel = new Hotel(1, "Aro palace", city);
-		
+
 		ERoomType room = ERoomType.SingleRoom;
-		
+
 		PackageOfferDecorator allInclusiveDecorator = new AllInclusivePackageOfferDecorator(new BasicPackageOffer());
-		
-		TravelContext travelContext=new TravelContext(new TravelByPlane());
-		
+
+		TravelContext travelContext = new TravelContext(new TravelByPlane());
+
 		// de adaugat strategy
-		agent.Construct(room, hotel, allInclusiveDecorator,travelContext,100);
-	
+		agent.Construct(room, hotel, allInclusiveDecorator, travelContext, 100);
+
 		agent.GetResult().getPackageLevel().Display();
 
 		PackageOffer ofer = agent.GetResult();

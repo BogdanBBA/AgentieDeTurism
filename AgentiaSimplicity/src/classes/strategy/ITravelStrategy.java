@@ -1,7 +1,8 @@
 package classes.strategy;
 
-public interface ITravelStrategy 
+public interface ITravelStrategy
 {
 	int calculateTravelCost();
+
 	String getType();
 }

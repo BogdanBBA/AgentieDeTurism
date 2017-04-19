@@ -13,8 +13,7 @@ public interface IIterator
 	AgencyResource current();
 
 	/**
-	 * @return {@code true} if, after increasing the current index position (depends on the specific iterator implementation) an item exists
-	 * at that position, or {@code false} otherwise
+	 * @return {@code true} if, after increasing the current index position (depends on the specific iterator implementation) an item exists at that position, or {@code false} otherwise
 	 */
 	boolean moveNext();
 

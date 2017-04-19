@@ -17,12 +17,12 @@ public class StandardIterable implements IIterable
 	@Override
 	public IIterator getIterator(ArrayList<? extends AgencyResource> resources)
 	{
-		this.items =  resources;
+		this.items = resources;
 		return new StandardIterator(this);
 	}
 
 	/**
-	 * @return the total item count of the resource list 
+	 * @return the total item count of the resource list
 	 */
 	public int count()
 	{
@@ -31,7 +31,8 @@ public class StandardIterable implements IIterable
 
 	/**
 	 * @return the item at the desired index position
-	 * @throws IndexOutOfBoundsException if the index is out of range (index < 0 || index >= size())
+	 * @throws IndexOutOfBoundsException
+	 *             if the index is out of range (index < 0 || index >= size())
 	 */
 	public AgencyResource get(int index)
 	{

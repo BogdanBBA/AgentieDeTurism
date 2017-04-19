@@ -22,7 +22,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ui.GraphicMethods;
 
-public class OfferViewController 
+public class OfferViewController
 {
 	@FXML
 	private Pane leftPane;
@@ -55,7 +55,7 @@ public class OfferViewController
 	@FXML
 	private TextArea basicInfoText;
 	@FXML
-	private TextArea extraInfoText;	
+	private TextArea extraInfoText;
 	@FXML
 	private ComboBox<String> roomCombo;
 	@FXML
@@ -64,67 +64,70 @@ public class OfferViewController
 	private ComboBox<String> travelCombo;
 	@FXML
 	private ImageView imageView;
-	private Stage primaryStage=new Stage();
-	
-	private ObservableList<String> rooms = FXCollections.observableArrayList("Single room","Double room","Apartment");
-	private ObservableList<String> facilities = FXCollections.observableArrayList("Basic","All inclusive","Ultra all inclusive");
-	private ObservableList<String> travel = FXCollections.observableArrayList("Not included","By plane","By bus","By train");
+	private Stage primaryStage = new Stage();
+
+	private ObservableList<String> rooms = FXCollections.observableArrayList("Single room", "Double room", "Apartment");
+	private ObservableList<String> facilities = FXCollections.observableArrayList("Basic", "All inclusive", "Ultra all inclusive");
+	private ObservableList<String> travel = FXCollections.observableArrayList("Not included", "By plane", "By bus", "By train");
 	private SafeProxyAccount safeAccount;
-	public GraphicMethods graphicM=new GraphicMethods();
+	public GraphicMethods graphicM = new GraphicMethods();
 	private LocalDate inDate;
 	private LocalDate outDate;
 	private String chosenRoom;
 	private String chosenFacility;
 	private String travellingType;
-	
-	public void setSafeAccount(SafeProxyAccount safeAccount) 
+
+	public void setSafeAccount(SafeProxyAccount safeAccount)
 	{
 		this.safeAccount = safeAccount;
 	}
-	
-	public void setInDate(LocalDate inDate) 
+
+	public void setInDate(LocalDate inDate)
 	{
-		this.inDate=inDate;
+		this.inDate = inDate;
 	}
-	
-	public void setOutDate(LocalDate outDate) 
+
+	public void setOutDate(LocalDate outDate)
 	{
-		this.outDate=outDate;
+		this.outDate = outDate;
 	}
-	
-	public void setImageView(String uri) 
+
+	public void setImageView(String uri)
 	{
-		Image image = new Image(uri,417,398,false, false);
+		Image image = new Image(uri, 417, 398, false, false);
 		imageView = new ImageView();
 		imageView.setImage(image);
 	}
-	
+
 	public void initializeComboBoxes()
 	{
 		roomCombo.setItems(rooms);
 		facilitiesCombo.setItems(facilities);
 		travelCombo.setItems(travel);
-		
-		roomCombo.setPromptText("Choose room type");        
-		roomCombo.setOnAction((ActionEvent ev) -> {
-			chosenRoom =  roomCombo.getSelectionModel().getSelectedItem().toString();    
+
+		roomCombo.setPromptText("Choose room type");
+		roomCombo.setOnAction((ActionEvent ev) ->
+		{
+			chosenRoom = roomCombo.getSelectionModel().getSelectedItem().toString();
 		});
-		
-		facilitiesCombo.setPromptText("Choose facilities type");        
-		facilitiesCombo.setOnAction((ActionEvent ev) -> {
-			chosenFacility =  facilitiesCombo.getSelectionModel().getSelectedItem().toString();    
+
+		facilitiesCombo.setPromptText("Choose facilities type");
+		facilitiesCombo.setOnAction((ActionEvent ev) ->
+		{
+			chosenFacility = facilitiesCombo.getSelectionModel().getSelectedItem().toString();
 		});
-		
-		travelCombo.setPromptText("Choose travelling type");        
-		travelCombo.setOnAction((ActionEvent ev) -> {
-			travellingType =  travelCombo.getSelectionModel().getSelectedItem().toString();    
+
+		travelCombo.setPromptText("Choose travelling type");
+		travelCombo.setOnAction((ActionEvent ev) ->
+		{
+			travellingType = travelCombo.getSelectionModel().getSelectedItem().toString();
 		});
 	}
-	
+
 	public void setView()
 	{
 		initializeComboBoxes();
-		if(inDate != null)
+		if (inDate != null)
 		{
 			checkinPicker.setPromptText(inDate.toString());
 			checkinPicker.setDisable(true);
@@ -133,52 +136,51 @@ public class OfferViewController
 			checkinPicker.getEditor().setStyle("-fx-text-inner-color: #FF01F3");
 		}
 		graphicM.isLoggedin(safeAccount, buttonLogout, accordion);
-		imageView.setImage(new Image("/ui/images/mypic.jpg",412,393,false, false));
+		imageView.setImage(new Image("/ui/images/mypic.jpg", 412, 393, false, false));
 		pictureLabel.setGraphic(imageView);
 	}
-	
+
 	@FXML
-    private void calculatePrice(ActionEvent event)
+	private void calculatePrice(ActionEvent event)
 	{
 		LocalDate inDate = checkinPicker.getValue();
 		LocalDate outDate = checkoutPicker.getValue();
 	}
-	
+
 	@FXML
-    private void reserve(ActionEvent event)
+	private void reserve(ActionEvent event)
 	{
 		LocalDate inDate = checkinPicker.getValue();
 		LocalDate outDate = checkoutPicker.getValue();
-		if(safeAccount==null)
+		if (safeAccount == null)
 			graphicM.showMyAlert("Not logged in!", "  You must be logged in in order to make a reservation.");
 		else
 		{
-			if(safeAccount.reserve())
+			if (safeAccount.reserve())
 			{
-				//->make payment
-			}
-			else
+				// ->make payment
+			} else
 				graphicM.showMyAlert("Not logged in!", "  You must be logged in in order to make a reservation.");
 		}
 	}
-	
+
 	@FXML
-    private void back(ActionEvent event)
+	private void back(ActionEvent event)
 	{
 		graphicM.loadMainStage(primaryStage);
 		graphicM.closeStage(event);
 	}
-	
+
 	@FXML
-    private void login(ActionEvent event)
+	private void login(ActionEvent event)
 	{
-		graphicM.login(safeAccount,buttonLogout,accordion,usernameField,passwordField);
+		graphicM.login(safeAccount, buttonLogout, accordion, usernameField, passwordField);
 	}
-	
+
 	@FXML
-    private void logout(ActionEvent event)
+	private void logout(ActionEvent event)
 	{
-		graphicM.logout(safeAccount,buttonLogout,accordion);
+		graphicM.logout(safeAccount, buttonLogout, accordion);
 	}
 
 }

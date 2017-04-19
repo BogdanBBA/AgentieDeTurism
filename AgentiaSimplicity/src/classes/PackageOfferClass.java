@@ -1,8 +1,6 @@
 package classes;
 
-public class PackageOfferClass 
+public class PackageOfferClass
 {
 
-	
-	
 }

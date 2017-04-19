@@ -6,15 +6,15 @@ public class TravelByBus implements ITravelStrategy
 {
 
 	@Override
-	public int calculateTravelCost() 
+	public int calculateTravelCost()
 	{
-		return ThreadLocalRandom.current().nextInt(100,200);
+		return ThreadLocalRandom.current().nextInt(100, 200);
 	}
 
 	@Override
-	public String getType() 
+	public String getType()
 	{
 		return "Travel by bus.";
 	}
-	
+
 }

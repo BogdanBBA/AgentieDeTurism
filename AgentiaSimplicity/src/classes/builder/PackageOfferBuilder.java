@@ -34,17 +34,15 @@ public class PackageOfferBuilder implements IPackageOfferBuilder
 	}
 
 	@Override
-	public void setPackageLevel(IPackageLevel packageLevel) 
+	public void setPackageLevel(IPackageLevel packageLevel)
 	{
 		packageOffer.setPackageLevel(packageLevel);
 	}
 
 	@Override
-	public void setTravelContext(TravelContext travelContext) 
+	public void setTravelContext(TravelContext travelContext)
 	{
 		packageOffer.setTravelContext(travelContext);
 	}
-
-	
 
 }
