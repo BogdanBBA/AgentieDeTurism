@@ -9,4 +9,8 @@
 <fullyQualifiedTypeName name="Decorator.PackageOfferDecorator"/>
 <fullyQualifiedTypeName name="Decorator.BasicPackageOffer"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="classes.builder.IPackageOfferBuilder"/>
+<fullyQualifiedTypeName name="classes.decorator.IPackageLevel"/>
+<fullyQualifiedTypeName name="classes.strategy.ITravelStrategy"/>
+<fullyQualifiedTypeName name="classes.strategy.TravelContext"/>
 </qualifiedTypeNameHistroy>

@@ -6,6 +6,14 @@ public abstract class PackageOfferDecorator implements IPackageLevel
 	public IPackageLevel myPackageOffer;
 	public EPackageType type;
 
+
+	public PackageOfferDecorator(IPackageLevel level)
+	{
+		this.myPackageOffer = level;
+
+	}
+
+	
 	public IPackageLevel getMyPackageOffer()
 	{
 		return this.myPackageOffer;
@@ -22,12 +30,6 @@ public abstract class PackageOfferDecorator implements IPackageLevel
 		this.type = type;
 	}
 
-	public PackageOfferDecorator(IPackageLevel level)
-	{
-		this.myPackageOffer = level;
-
-	}
-
 	@Override
 	public EPackageType getType()
 	{
@@ -39,7 +41,7 @@ public abstract class PackageOfferDecorator implements IPackageLevel
 	{
 		myPackageOffer.setBenefits(type, name, price);
 	}
-
+	
 	@Override
 	public void Assemble()
 	{

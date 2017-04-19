@@ -22,12 +22,12 @@
                         <Image url="@../images/logo.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="buttonLogout" mnemonicParsing="false" onAction="#logout" text="Log out" textFill="#fcfafa" visible="false" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="5.0">
+                  <Button fx:id="buttonLogout" layoutY="8.0" mnemonicParsing="false" onAction="#logout" prefHeight="47.0" prefWidth="95.0" text="Log out" textFill="#fcfafa" visible="false" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="11.0">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="buttonBack" layoutX="682.0" layoutY="11.0" mnemonicParsing="false" onAction="#back" prefHeight="47.0" prefWidth="70.0" text="Back" textFill="#fcfcfc" AnchorPane.rightAnchor="272.0" AnchorPane.topAnchor="11.0">
+                  <Button fx:id="buttonBack" layoutX="682.0" layoutY="11.0" mnemonicParsing="false" onAction="#back" prefHeight="47.0" prefWidth="75.0" text="Back" textFill="#fcfcfc" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="11.0">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font></Button>
@@ -136,7 +136,7 @@
             </GridPane>
          </center>
       </BorderPane>
-      <Accordion fx:id="accordion" prefHeight="204.0" prefWidth="244.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="5.0">
+      <Accordion fx:id="accordion" prefHeight="204.0" prefWidth="244.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="5.0">
         <panes>
           <TitledPane alignment="CENTER_RIGHT" animated="false" contentDisplay="CENTER" prefHeight="209.0" prefWidth="234.0" text="Login" textFill="WHITE">
             <content>

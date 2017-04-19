@@ -11,10 +11,10 @@
 		<City ID="5" name="Krakow, Poland" />
 	</Cities>
 	<Hotels>
-		<Hotel ID="1" name="Cămin Memo" cityID="1" />
-		<Hotel ID="2" name="Pensiune Nicu Klein" cityID="2" />
-		<Hotel ID="3" name="Hotel Aro Palace" cityID="1" />
-		<Hotel ID="4" name="Hotel Europejski" cityID="5" />
-		<Hotel ID="5" name="Hotel Aethria" cityID="3" />
+		<Hotel ID="1" name="Cămin Memo" cityID="1" priceModifier="0.7" />
+		<Hotel ID="2" name="Pensiune Nicu Klein" cityID="2" priceModifier="0.85" />
+		<Hotel ID="3" name="Hotel Aro Palace" cityID="1" priceModifier="1.05"/>
+		<Hotel ID="4" name="Hotel Europejski" cityID="5" priceModifier="1"/>
+		<Hotel ID="5" name="Hotel Aethria" cityID="3" priceModifier="1.2"/>
 	</Hotels>
 </Simplicity>

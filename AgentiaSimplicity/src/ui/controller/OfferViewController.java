@@ -1,5 +1,6 @@
 package ui.controller;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 import classes.proxy.SafeProxyAccount;
@@ -7,6 +8,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -127,60 +130,78 @@ public class OfferViewController
 	public void setView()
 	{
 		initializeComboBoxes();
-		if (inDate != null)
+		if(inDate != null)
 		{
-			checkinPicker.setPromptText(inDate.toString());
-			checkinPicker.setDisable(true);
-			checkinPicker.setStyle("-fx-opacity: 1");
-			checkinPicker.getEditor().setStyle("-fx-opacity: 1");
-			checkinPicker.getEditor().setStyle("-fx-text-inner-color: #FF01F3");
+			checkinPicker.setValue(inDate);
+		}
+		if(outDate != null)
+		{
+			checkoutPicker.setValue(outDate);
 		}
 		graphicM.isLoggedin(safeAccount, buttonLogout, accordion);
-		imageView.setImage(new Image("/ui/images/mypic.jpg", 412, 393, false, false));
+		imageView.setImage(new Image("/ui/images/mypic.jpg",412,393,false, false));
 		pictureLabel.setGraphic(imageView);
 	}
-
+	
 	@FXML
-	private void calculatePrice(ActionEvent event)
+    private void calculatePrice(ActionEvent event)
 	{
 		LocalDate inDate = checkinPicker.getValue();
 		LocalDate outDate = checkoutPicker.getValue();
 	}
-
+	
 	@FXML
-	private void reserve(ActionEvent event)
+    private void reserve(ActionEvent event)
 	{
 		LocalDate inDate = checkinPicker.getValue();
 		LocalDate outDate = checkoutPicker.getValue();
-		if (safeAccount == null)
+		if(safeAccount==null)
 			graphicM.showMyAlert("Not logged in!", "  You must be logged in in order to make a reservation.");
 		else
 		{
-			if (safeAccount.reserve())
+			if(safeAccount.reserve())
 			{
-				// ->make payment
-			} else
+				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ui/view/PaymentView.fxml"));
+	  			Parent root;
+				try 
+				{
+					root = (Parent)fxmlLoader.load();
+					PaymentViewController controller = fxmlLoader.<PaymentViewController>getController();
+					controller.setSafeAccount(safeAccount);
+	  				controller.setView();
+	  				graphicM.setStage(primaryStage,root);
+	  				graphicM.closeStage(event);
+		  				
+				} 
+				catch (IOException e) 
+				{
+					e.printStackTrace();
+				}
+			}
+			else
 				graphicM.showMyAlert("Not logged in!", "  You must be logged in in order to make a reservation.");
 		}
 	}
-
+	
 	@FXML
-	private void back(ActionEvent event)
+    private void back(ActionEvent event)
 	{
 		graphicM.loadMainStage(primaryStage);
 		graphicM.closeStage(event);
 	}
-
+	
 	@FXML
-	private void login(ActionEvent event)
+    private void login(ActionEvent event)
 	{
-		graphicM.login(safeAccount, buttonLogout, accordion, usernameField, passwordField);
+		safeAccount=graphicM.login(buttonLogout,accordion,usernameField,passwordField);
+	}
+	
+	@FXML
+    private void logout(ActionEvent event)
+	{
+		safeAccount=null;
+		graphicM.logout(buttonLogout,accordion);
 	}
 
-	@FXML
-	private void logout(ActionEvent event)
-	{
-		graphicM.logout(safeAccount, buttonLogout, accordion);
-	}
 
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<Simplicity>
+	<Users>
+		<User username="abc" password="123" />
+	</Users>
+	<Cities>
+		<City ID="1" name="Brasov, Romania" />
+		<City ID="2" name="Sibiu, Romania" />
+		<City ID="3" name="Thassos, Greece" />
+		<City ID="4" name="Paris, France" />
+		<City ID="5" name="Krakow, Poland" />
+	</Cities>
+	<Hotels>
+		<Hotel ID="1" name="Cămin Memo" cityID="1" priceModifier="0.7" />
+		<Hotel ID="2" name="Pensiune Nicu Klein" cityID="2" priceModifier="0.85" />
+		<Hotel ID="3" name="Hotel Aro Palace" cityID="1" priceModifier="1.05"/>
+		<Hotel ID="4" name="Hotel Europejski" cityID="5" priceModifier="1"/>
+		<Hotel ID="5" name="Hotel Aethria" cityID="3" />
+	</Hotels>
+</Simplicity>

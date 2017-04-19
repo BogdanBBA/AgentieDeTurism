@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="container" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.OfferViewController">
+<AnchorPane fx:id="container" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.PaymentViewController">
    <children>
       <BorderPane fx:id="border" layoutX="10.0" layoutY="10.0" prefHeight="778.0" prefWidth="1034.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -22,12 +22,12 @@
                         <Image url="@../images/logo.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="buttonLogout" mnemonicParsing="false" onAction="#logout" text="Log out" textFill="#fcfafa" visible="false" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="5.0">
+                  <Button fx:id="buttonLogout" layoutX="829.0" layoutY="11.0" maxHeight="47.0" mnemonicParsing="false" onAction="#logout" prefHeight="47.0" prefWidth="95.0" text="Log out" textFill="#fcfafa" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="11.0">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="buttonBack" layoutX="934.0" layoutY="11.0" mnemonicParsing="false" onAction="#back" prefHeight="47.0" prefWidth="70.0" text="Back" textFill="#fcfcfc" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
+                  <Button fx:id="buttonBack" layoutX="935.0" layoutY="11.0" mnemonicParsing="false" onAction="#back" prefHeight="47.0" prefWidth="75.0" text="Back" textFill="#fcfcfc" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="11.0">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font></Button>
@@ -76,19 +76,6 @@
                               <Font name="System Bold" size="14.0" />
                            </font></Label>
                         <TextField fx:id="priceField" alignment="CENTER" editable="false" maxWidth="286.0" />
-                        <Button fx:id="buttonCalculatePrice" mnemonicParsing="false" onAction="#calculatePrice" prefHeight="25.0" prefWidth="286.0" text="Calculate price" textFill="#fcfcfc">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="buttonReserve" mnemonicParsing="false" onAction="#reserve" prefHeight="31.0" prefWidth="286.0" text="Back to offers" textFill="WHITE">
-                           <VBox.margin>
-                              <Insets top="10.0" />
-                           </VBox.margin>
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                        </Button>
                      </children>
                   </VBox>
                </children>
@@ -100,41 +87,6 @@
          <left>
             <Pane fx:id="leftPane" prefHeight="662.0" prefWidth="12.0" BorderPane.alignment="CENTER" />
          </left>
-         <center>
-            <GridPane fx:id="offerGrid" alignment="TOP_RIGHT" maxWidth="696.0" prefHeight="662.0" prefWidth="696.0" BorderPane.alignment="CENTER">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="712.0" minWidth="10.0" prefWidth="712.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="412.0" minWidth="0.0" prefWidth="0.0" />
-              </columnConstraints>
-              <rowConstraints>
-                  <RowConstraints maxHeight="398.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="396.0" minHeight="10.0" prefHeight="395.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="278.0" minHeight="10.0" prefHeight="225.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="138.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Label fx:id="destinationLabel" alignment="CENTER" prefHeight="43.0" prefWidth="712.0" text="Grecia" textFill="#336699">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font></Label>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-                     <children>
-                        <Label fx:id="pictureLabel" layoutX="-2.0" layoutY="-1.0" prefHeight="398.0" prefWidth="417.0" style="-fx-border-color: #008080; -fx-border-width: 3;" />
-                        <TextArea fx:id="basicInfoText" editable="false" layoutX="423.0" maxWidth="289.0" prefHeight="397.0" prefWidth="273.0">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </TextArea>
-                     </children>
-                  </AnchorPane>
-                  <TextArea fx:id="extraInfoText" editable="false" maxHeight="210.0" maxWidth="712.0" prefHeight="210.0" prefWidth="712.0" GridPane.rowIndex="2">
-                     <GridPane.margin>
-                        <Insets top="5.0" />
-                     </GridPane.margin>
-                  </TextArea>
-               </children>
-            </GridPane>
-         </center>
       </BorderPane>
    </children>
 </AnchorPane>

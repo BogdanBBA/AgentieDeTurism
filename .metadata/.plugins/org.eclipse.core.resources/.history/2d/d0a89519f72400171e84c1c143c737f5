@@ -1,0 +1,44 @@
+package classes.builder;
+
+import classes.decorator.AllInclusivePackageOfferDecorator;
+import classes.decorator.BasicPackageOffer;
+import classes.decorator.PackageOfferDecorator;
+import classes.model.City;
+import classes.model.Hotel;
+import classes.strategy.TravelByPlane;
+import classes.strategy.TravelContext;
+import classes.model.ERoomType;
+
+public class testBuilder
+{
+	public static void main(String[] args)
+	{
+		IPackageOfferBuilder builder = new PackageOfferBuilder();
+		PackageOfferBuilderAgent agent = new PackageOfferBuilderAgent(builder);
+
+		City city = new City(1, "Brasov, Romania");
+
+		Hotel hotel = new Hotel(1, "Aro palace", city, 2.0);
+
+		ERoomType room = ERoomType.SingleRoom;
+
+		PackageOfferDecorator allInclusiveDecorator = new AllInclusivePackageOfferDecorator(new BasicPackageOffer());
+
+		TravelContext travelContext = new TravelContext(new TravelByPlane());
+
+		// de adaugat strategy
+		agent.Construct(room, hotel, allInclusiveDecorator, travelContext, 100);
+
+		agent.GetResult().getPackageLevel().Display();
+
+		PackageOffer ofer = agent.GetResult();
+
+		double sum = ofer.getPackageLevel() * ofer.getHotel().getPriceModifier();
+		System.out.println(ofer.getPrice());
+		System.out.println(sum);
+		
+		
+		System.out.println(ofer);
+
+	}
+}

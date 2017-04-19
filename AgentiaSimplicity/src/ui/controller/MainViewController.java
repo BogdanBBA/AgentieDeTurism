@@ -18,7 +18,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -112,11 +111,8 @@ public class MainViewController
 						controller.setInDate(inDate);
 						controller.setOutDate(outDate);
 						controller.setView();
-						Scene scene = new Scene(root, 1024, 720);
-						scene.getStylesheets().add(getClass().getResource("/ui/style/style.css").toExternalForm());
-						primaryStage.setScene(scene);
-						primaryStage.show();
-						graphicM.closeStage(event);
+						graphicM.setStage(primaryStage,root);
+		  				graphicM.closeStage(event);
 
 					} catch (IOException e)
 					{
@@ -185,14 +181,15 @@ public class MainViewController
 	}
 
 	@FXML
-	private void login(ActionEvent event)
+    private void login(ActionEvent event)
 	{
-		graphicM.login(safeAccount, buttonLogout, accordion, usernameField, passwordField);
+		safeAccount=graphicM.login(buttonLogout,accordion,usernameField,passwordField);	
 	}
-
+	
 	@FXML
-	private void logout(ActionEvent event)
+    private void logout(ActionEvent event)
 	{
-		graphicM.logout(safeAccount, buttonLogout, accordion);
+		safeAccount=null;
+		graphicM.logout(buttonLogout,accordion);
 	}
 }

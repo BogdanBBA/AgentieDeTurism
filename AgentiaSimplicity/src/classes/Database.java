@@ -80,8 +80,9 @@ public class Database
 				int id = Integer.parseInt(hotelNode.getAttribute("ID"));
 				String name = hotelNode.getAttribute("name");
 				int cityId = Integer.parseInt(hotelNode.getAttribute("cityID"));
+				double priceModifier = Double.parseDouble(hotelNode.getAttribute("priceModifier"));
 				City city = this.cities.stream().filter(x -> x.getId() == cityId).findFirst().get();
-				this.hotels.add(new Hotel(id, name, city));
+				this.hotels.add(new Hotel(id, name, city, priceModifier));
 			}
 
 			return "";

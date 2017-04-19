@@ -18,7 +18,7 @@ public class testBuilder
 
 		City city = new City(1, "Brasov, Romania");
 
-		Hotel hotel = new Hotel(1, "Aro palace", city);
+		Hotel hotel = new Hotel(1, "Aro palace", city, 2.0);
 
 		ERoomType room = ERoomType.SingleRoom;
 
@@ -33,6 +33,15 @@ public class testBuilder
 
 		PackageOffer ofer = agent.GetResult();
 
+		int price = ((BasicPackageOffer) ((PackageOfferDecorator) ofer.getPackageLevel()).getMyPackageOffer()).getPrice();
+		
+		System.out.println(price);
+		
+	//	double sum = ((PackageOfferDecorator)ofer.getPackageLevel()).getMyPackageOffer() * ofer.getHotel().getPriceModifier();
+		System.out.println(ofer.getPrice());
+	//	System.out.println(sum);
+		
+		
 		System.out.println(ofer);
 
 	}
