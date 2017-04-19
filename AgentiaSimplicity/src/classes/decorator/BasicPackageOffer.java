@@ -3,6 +3,9 @@ package classes.decorator;
 import java.util.ArrayList;
 import java.util.List;
 
+import classes.Utils;
+import javafx.scene.control.TextArea;
+
 public class BasicPackageOffer implements IPackageLevel
 {
 
@@ -103,20 +106,40 @@ public class BasicPackageOffer implements IPackageLevel
 	{
 		price = 20;
 
-		BasicPackageOfferBenefits.add("Mic dejun inclus - bufet suedez.");
-		BasicPackageOfferBenefits.add("Bar - bauturi alcoolice si racoritoare din productie indigena(bere, vin alb/rosu, bauturi spirtoase)");
-
+		for(int i = 0; i< Utils.BASIC.size(); i++)
+			BasicPackageOfferBenefits.add((String)Utils.BASIC.get(i).getKey());
 	}
 
 	@Override
-	public void Display()
+	public void Display(TextArea detailsText)
 	{
-		System.out.println();
+		if(BasicPackageOfferBenefits.size()>0)
+		{
+			detailsText.appendText("Basic \n");
+			for (int i = 0; i < BasicPackageOfferBenefits.size(); i++)
+				detailsText.appendText("\t" + BasicPackageOfferBenefits.get(i) + "\n");
+		}
+		
+		if(AllInclusivePackageOfferBenefits.size()>0)
+		{
+			detailsText.appendText("\nAll inclusive \n");
+			for (int i = 0; i < AllInclusivePackageOfferBenefits.size(); i++)
+				detailsText.appendText("\t"+AllInclusivePackageOfferBenefits.get(i)+"\n");
+		}
+		
+		if(UltraAllInclusivePackageOfferBenefits.size()>0)
+		{
+			detailsText.appendText("\nUltra all inclusive \n");
+			for (int i = 0; i < UltraAllInclusivePackageOfferBenefits.size(); i++)
+				detailsText.appendText("\t" + UltraAllInclusivePackageOfferBenefits.get(i)+"\n");
+		}
+		
+		//System.out.println();
 
-		System.out.println("Price");
-		System.out.println(price);
+		/*System.out.println("Price");
+		System.out.println(price);*/
 
-		System.out.println("----Basic----");
+		/*System.out.println("----Basic----");
 		for (int i = 0; i < BasicPackageOfferBenefits.size(); i++)
 			System.out.println(BasicPackageOfferBenefits.get(i));
 
@@ -128,7 +151,7 @@ public class BasicPackageOffer implements IPackageLevel
 		for (int i = 0; i < UltraAllInclusivePackageOfferBenefits.size(); i++)
 			System.out.println(UltraAllInclusivePackageOfferBenefits.get(i));
 
-		System.out.println("\n");
+		System.out.println("\n");*/
 	}
 
 }

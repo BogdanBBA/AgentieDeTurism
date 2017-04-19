@@ -1,5 +1,6 @@
 package classes.builder;
 
+import classes.Utils;
 import classes.decorator.AllInclusivePackageOfferDecorator;
 import classes.decorator.BasicPackageOffer;
 import classes.decorator.PackageOfferDecorator;
@@ -17,32 +18,28 @@ public class testBuilder
 		PackageOfferBuilderAgent agent = new PackageOfferBuilderAgent(builder);
 
 		City city = new City(1, "Brasov, Romania");
-
-		Hotel hotel = new Hotel(1, "Aro palace", city, 2.0);
-
+		Hotel hotel = new Hotel(1,0, "Aro palace", city, 0.9);
 		ERoomType room = ERoomType.SingleRoom;
-
 		PackageOfferDecorator allInclusiveDecorator = new AllInclusivePackageOfferDecorator(new BasicPackageOffer());
-
 		TravelContext travelContext = new TravelContext(new TravelByPlane());
-
+		travelContext.executeStrategy();
+		
 		// de adaugat strategy
-		agent.Construct(room, hotel, allInclusiveDecorator, travelContext, 100);
+		agent.Construct(room, hotel, allInclusiveDecorator, travelContext);
+		//agent.GetResult().getPackageLevel().Display();
 
-		agent.GetResult().getPackageLevel().Display();
-
-		PackageOffer ofer = agent.GetResult();
-
-		int price = ((BasicPackageOffer) ((PackageOfferDecorator) ofer.getPackageLevel()).getMyPackageOffer()).getPrice();
+		PackageOffer offer = agent.GetResult();
 		
+
+		int price = ((BasicPackageOffer) ((PackageOfferDecorator) offer.getPackageLevel()).getMyPackageOffer()).getPrice();
 		System.out.println(price);
+
 		
-	//	double sum = ((PackageOfferDecorator)ofer.getPackageLevel()).getMyPackageOffer() * ofer.getHotel().getPriceModifier();
-		System.out.println(ofer.getPrice());
-	//	System.out.println(sum);
+		Utils mt = new Utils();
 		
+		System.out.println(mt.calculatePrice(offer, 8));
 		
-		System.out.println(ofer);
+		System.out.println(offer);
 
 	}
 }

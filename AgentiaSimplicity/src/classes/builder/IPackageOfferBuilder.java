@@ -17,6 +17,4 @@ public interface IPackageOfferBuilder
 
 	void setHotel(Hotel hotel);
 
-	void setPrice(int price);
-
 }

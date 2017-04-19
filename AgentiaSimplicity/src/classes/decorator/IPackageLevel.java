@@ -1,5 +1,7 @@
 package classes.decorator;
 
+import javafx.scene.control.TextArea;
+
 public interface IPackageLevel
 {
 	EPackageType getType();
@@ -10,6 +12,6 @@ public interface IPackageLevel
 
 	void Assemble();
 
-	void Display();
+	void Display(TextArea detailsText);
 	
 }

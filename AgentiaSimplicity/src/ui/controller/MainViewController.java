@@ -1,10 +1,7 @@
 package ui.controller;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
-
 import classes.Database;
 import classes.iterator.IIterator;
 import classes.iterator.StandardIterable;
@@ -67,24 +64,22 @@ public class MainViewController
 	private Label noResultLabel;
 	@FXML
 	private VBox v;
+	private ScrollPane scrollPane;
 
 	private Stage primaryStage = new Stage();
 	private SafeProxyAccount safeAccount;
 	public GraphicMethods graphicM = new GraphicMethods();
-	List<Button> buttons = new ArrayList<Button>();
 	private ObservableList<String> accomodations = FXCollections.observableArrayList("Hotel", "Motel", "Inns", "Guesthouse");
-	private String chosenAccomodation;
-	private LocalDate inDate;
-	private LocalDate outDate;
+	private int chosenAccomodation;
 
 	public void setSafeAccount(SafeProxyAccount safeAcc)
 	{
 		this.safeAccount = safeAcc;
 	}
 
-	public void initializeListOfOffers(VBox v, ScrollPane scrollPane)
+	public void initializeListOfOffers(VBox v, ScrollPane scrollPane,ArrayList<Hotel> hotels)
 	{
-		IIterator iterator = new StandardIterable().getIterator(Database.getInstance().getHotels());
+		IIterator iterator = new StandardIterable().getIterator(hotels);
 		while (iterator.moveNext())
 		{
 			Hotel hotel = (Hotel) iterator.current();
@@ -107,9 +102,8 @@ public class MainViewController
 						root = (Parent) fxmlLoader.load();
 						OfferViewController controller = fxmlLoader.<OfferViewController>getController();
 						controller.setImageView(imageUri);
+						controller.setHotel(hotel);
 						controller.setSafeAccount(safeAccount);
-						controller.setInDate(inDate);
-						controller.setOutDate(outDate);
 						controller.setView();
 						graphicM.setStage(primaryStage,root);
 		  				graphicM.closeStage(event);
@@ -123,7 +117,6 @@ public class MainViewController
 
 			button.setMinWidth(v.getPrefWidth());
 			v.getChildren().add(button);
-			buttons.add(button);
 		}
 	}
 
@@ -134,7 +127,8 @@ public class MainViewController
 		accomodationCombo.setPromptText("Choose accomodation type");
 		accomodationCombo.setOnAction((ActionEvent ev) ->
 		{
-			chosenAccomodation = accomodationCombo.getSelectionModel().getSelectedItem().toString();
+			chosenAccomodation = accomodationCombo.getSelectionModel().getSelectedIndex();
+			System.out.println(chosenAccomodation);
 		});
 	}
 
@@ -149,34 +143,27 @@ public class MainViewController
 		v.setPrefSize(640, 671);
 		leftPane.setPrefWidth(1024 - 955);
 
-		ScrollPane scrollPane = new ScrollPane(v);
+		scrollPane = new ScrollPane(v);
 		scrollPane.setFitToHeight(true);
 		scrollPane.setMaxWidth(655);
-		initializeListOfOffers(v, scrollPane);
+		initializeListOfOffers(v, scrollPane, Database.getInstance().getHotels());
 		border.setCenter(scrollPane);
 	}
 
 	@FXML
 	private void search(ActionEvent event)
 	{
-		String result = "";
 		String destination = destinationField.getText();
-		inDate = checkinPicker.getValue();
-		outDate = checkoutPicker.getValue();
 
-		if (destination.isEmpty() && inDate == null && outDate == null && chosenAccomodation == null)
+
+		if (destination.isEmpty() && chosenAccomodation <0)
 		{
 			graphicM.showMyAlert("No search criteria!", "  Please enter the criteria needed for search.");
-		} else
+		}
+		else
 		{
-			if (result.isEmpty())
-				graphicM.showMyAlert("No search result!", "  Please change the criteria for search and try again.");
-			else
-			{
-				v.getChildren().clear();
-				for (int i = 0; i < 4; i++)
-					v.getChildren().add(buttons.get(i));
-			}
+			v.getChildren().clear();
+			initializeListOfOffers(v, scrollPane, Database.getInstance().searchHotels(destination, chosenAccomodation));
 		}
 	}
 

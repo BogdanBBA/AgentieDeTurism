@@ -31,19 +31,6 @@ public class SafeProxyAccount implements IAccount
 				return true;
 		}
 		return false;
-
-	}
-
-	@Override
-	public boolean makePayment(User user)
-	{
-		if (wrappedAccount != null)
-		{
-			if (wrappedAccount.makePayment(user))
-				return true;
-		}
-		return false;
-
 	}
 
 	@Override

@@ -33,28 +33,21 @@
          <right>
             <AnchorPane prefHeight="671.0" prefWidth="300.0" BorderPane.alignment="CENTER">
                <children>
-                  <VBox alignment="CENTER" layoutX="102.0" prefHeight="700.0" prefWidth="260.0" spacing="17.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                  <VBox alignment="CENTER" layoutX="102.0" prefHeight="700.0" prefWidth="260.0" spacing="35.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="17.0" prefWidth="262.0" text="Search" textFill="#336699">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets bottom="40.0" />
+                           </VBox.margin>
                         </Label>
                         <Label alignment="CENTER" prefHeight="17.0" prefWidth="262.0" text="Destination" textFill="#336699">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font></Label>
                         <TextField fx:id="destinationField" maxWidth="286.0" prefHeight="25.0" prefWidth="286.0" />
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="264.0" text="Check-in date" textFill="#336699">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font></Label>
-                        <DatePicker fx:id="checkinPicker" prefHeight="25.0" prefWidth="286.0" />
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="262.0" text="Check-out date" textFill="#336699">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font></Label>
-                        <DatePicker fx:id="checkoutPicker" prefHeight="25.0" prefWidth="286.0" />
                         <Label alignment="CENTER" prefHeight="17.0" prefWidth="261.0" text="Accommodation type" textFill="#336699">
                            <font>
                               <Font name="System Bold" size="14.0" />

@@ -1,70 +1,58 @@
 package ui.controller;
 
+import classes.builder.PackageOffer;
 import classes.proxy.SafeProxyAccount;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import ui.GraphicMethods;
 
 public class PaymentViewController 
 {
 	@FXML
-	private Pane leftPane;
-	@FXML
-	private ScrollPane scroll;
-	@FXML
-	private VBox v;
-	@FXML
-	private BorderPane border;
+	private TextArea detailsText;
 	
 	private Stage primaryStage=new Stage();
 	private SafeProxyAccount safeAccount;
 	public GraphicMethods graphicM=new GraphicMethods();
+	private PackageOffer offer;
+	private double finalPrice;
 	
 	public void setSafeAccount(SafeProxyAccount safeAccount) 
 	{
 		this.safeAccount = safeAccount;
 	}
 	
-	public void initializeReservation(VBox v,ScrollPane scrollPane)
+	public void setPackageOffer(PackageOffer offer) 
 	{
-		Label l=new Label();
-		l.setText("dasvhgsfd");
-		l.setMinWidth(v.getPrefWidth());
-		v.getChildren().add(l);
+		this.offer = offer;
+	}
+	
+	public void setFinalPrice(double finalPrice) 
+	{
+		this.finalPrice = finalPrice;
 	}
 	
 	public void setView()
 	{
-		v = new VBox();
-	    v.setAlignment(Pos.TOP_RIGHT);
-	    v.setSpacing(20);
-	    v.setPrefSize(640, 671);
-	    leftPane.setPrefWidth(1024-955);
-	    
-	    ScrollPane scrollPane = new ScrollPane(v);
-	    scrollPane.setFitToHeight(true);
-	    scrollPane.setMaxWidth(655);
-	    initializeReservation(v,scrollPane);
-	    border.setCenter(scrollPane);
+		detailsText.appendText("\n");
+		offer.getPackageLevel().Display(detailsText);
+		detailsText.appendText("\n\n\nTotal cost:   "+finalPrice);
 	}
 	
 	@FXML
     private void back(ActionEvent event)
 	{
-		
+		graphicM.loadMainStage(primaryStage,safeAccount);
+		graphicM.closeStage(event);
 	}
 	
 	@FXML
     private void logout(ActionEvent event)
 	{
-		graphicM.loadMainStage(primaryStage);
+		safeAccount=null;
+		graphicM.loadMainStage(primaryStage,safeAccount);
 		graphicM.closeStage(event);
 	}
 }

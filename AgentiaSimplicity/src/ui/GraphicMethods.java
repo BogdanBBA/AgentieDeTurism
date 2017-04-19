@@ -59,13 +59,14 @@ public class GraphicMethods
 
 	}
 	
-	public void loadMainStage(Stage primaryStage)
+	public void loadMainStage(Stage primaryStage,SafeProxyAccount safeAccount)
 	{
 		try 
 		{
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ui/view/MainView.fxml"));
 			Parent root = (Parent)fxmlLoader.load();
 			MainViewController controller = fxmlLoader.<MainViewController>getController();
+			controller.setSafeAccount(safeAccount);
 			controller.initialize();
 			setStage(primaryStage,root);
 		} 
@@ -120,6 +121,5 @@ public class GraphicMethods
 		accordion.setVisible(true);
 		accordion.getExpandedPane().setExpanded(false);
 	}
-	
 
 }

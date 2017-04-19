@@ -11,7 +11,6 @@ public class PackageOffer
 	private Hotel hotel;
 	private IPackageLevel packageLevel;
 	private TravelContext travelContext;
-	private int price;
 
 	public TravelContext getTravelContext()
 	{
@@ -54,21 +53,10 @@ public class PackageOffer
 		this.hotel = hotel;
 	}
 
-	public int getPrice()
-	{
-		return price;
-	}
-
-	public void setPrice(int price)
-	{
-		this.price = price;
-	}
-
 	@Override
 	public String toString()
 	{
-		return "PackageOffer [roomType=" + roomType + ", hotel=" + hotel + ", packageLevel=" + packageLevel.getType() + ", travelContext=" + travelContext.getType() + ",Travel price =" + travelContext.executeStrategy() + ", price=" + price
-				+ "]";
+		return "PackageOffer [roomType=" + roomType + ", hotel=" + hotel + ", packageLevel=" + packageLevel.getType() + ", travelContext=" + travelContext.getType() + ",Travel price =" + travelContext.getPrice()+ "]";
 	}
 
 }

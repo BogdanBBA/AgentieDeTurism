@@ -2,6 +2,8 @@ package classes.strategy;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+import classes.model.ETravelType;
+
 public class TravelByBus implements ITravelStrategy
 {
 
@@ -12,9 +14,9 @@ public class TravelByBus implements ITravelStrategy
 	}
 
 	@Override
-	public String getType()
+	public ETravelType getType()
 	{
-		return "Travel by bus.";
+		return ETravelType.Bus;
 	}
 
 }

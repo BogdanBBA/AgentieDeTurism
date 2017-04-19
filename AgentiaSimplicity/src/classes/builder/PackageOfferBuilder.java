@@ -28,12 +28,6 @@ public class PackageOfferBuilder implements IPackageOfferBuilder
 	}
 
 	@Override
-	public void setPrice(int price)
-	{
-		packageOffer.setPrice(price);
-	}
-
-	@Override
 	public void setPackageLevel(IPackageLevel packageLevel)
 	{
 		packageOffer.setPackageLevel(packageLevel);
@@ -44,5 +38,4 @@ public class PackageOfferBuilder implements IPackageOfferBuilder
 	{
 		packageOffer.setTravelContext(travelContext);
 	}
-
 }

@@ -22,12 +22,12 @@
                         <Image url="@../images/logo.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="buttonLogout" mnemonicParsing="false" onAction="#logout" text="Log out" textFill="#fcfafa" visible="false" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="5.0">
+                  <Button fx:id="buttonLogout" layoutY="8.0" mnemonicParsing="false" onAction="#logout" prefHeight="47.0" prefWidth="95.0" text="Log out" textFill="#fcfafa" visible="false" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="11.0">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="buttonBack" layoutX="682.0" layoutY="11.0" mnemonicParsing="false" onAction="#back" prefHeight="47.0" prefWidth="70.0" text="Back" textFill="#fcfcfc" AnchorPane.rightAnchor="272.0" AnchorPane.topAnchor="11.0">
+                  <Button fx:id="buttonBack" layoutX="682.0" layoutY="11.0" mnemonicParsing="false" onAction="#back" prefHeight="47.0" prefWidth="75.0" text="Back" textFill="#fcfcfc" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="11.0">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font></Button>
@@ -60,7 +60,7 @@
                            </font>
                         </Label>
                         <ComboBox fx:id="roomCombo" prefWidth="286.0" />
-                        <Label alignment="CENTER" prefHeight="20.0" prefWidth="303.0" text="Extra facilities" textFill="#336699">
+                        <Label alignment="CENTER" prefHeight="20.0" prefWidth="303.0" text="Facilities" textFill="#336699">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font></Label>
@@ -119,12 +119,7 @@
                      </font></Label>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <children>
-                        <Label fx:id="pictureLabel" layoutX="-2.0" layoutY="-1.0" prefHeight="398.0" prefWidth="417.0" style="-fx-border-color: #008080; -fx-border-width: 3;" />
-                        <TextArea fx:id="basicInfoText" editable="false" layoutX="423.0" maxWidth="289.0" prefHeight="397.0" prefWidth="273.0">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </TextArea>
+                        <Label fx:id="pictureLabel" alignment="CENTER" layoutX="-2.0" layoutY="-1.0" prefHeight="398.0" prefWidth="640.0" style="-fx-border-color: #008080; -fx-border-width: 3;" AnchorPane.leftAnchor="28.0" />
                      </children>
                   </AnchorPane>
                   <TextArea fx:id="extraInfoText" editable="false" maxHeight="210.0" maxWidth="712.0" prefHeight="210.0" prefWidth="712.0" GridPane.rowIndex="2">
@@ -136,7 +131,7 @@
             </GridPane>
          </center>
       </BorderPane>
-      <Accordion fx:id="accordion" prefHeight="204.0" prefWidth="244.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="5.0">
+      <Accordion fx:id="accordion" prefHeight="204.0" prefWidth="244.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="5.0">
         <panes>
           <TitledPane alignment="CENTER_RIGHT" animated="false" contentDisplay="CENTER" prefHeight="209.0" prefWidth="234.0" text="Login" textFill="WHITE">
             <content>

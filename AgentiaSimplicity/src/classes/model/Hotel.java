@@ -5,13 +5,15 @@ import classes.AgencyResource;
 public class Hotel implements AgencyResource
 {
 	private int id;
+	private int type;
 	private String name;
 	private City city;
 	private double priceModifier;
 	
-	public Hotel(int id, String name, City city, double priceModifier)
+	public Hotel(int id, int type, String name, City city, double priceModifier)
 	{
 		this.id = id;
+		this.type = type;
 		this.name = name;
 		this.city = city;
 		this.priceModifier = priceModifier;
@@ -25,6 +27,11 @@ public class Hotel implements AgencyResource
 	public int getId()
 	{
 		return id;
+	}
+	
+	public int getType()
+	{
+		return type;
 	}
 
 	public String getName()

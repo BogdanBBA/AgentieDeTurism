@@ -1,5 +1,7 @@
 package classes.decorator;
 
+import javafx.scene.control.TextArea;
+
 public abstract class PackageOfferDecorator implements IPackageLevel
 {
 
@@ -49,9 +51,9 @@ public abstract class PackageOfferDecorator implements IPackageLevel
 	}
 
 	@Override
-	public void Display()
+	public void Display(TextArea detailsText)
 	{
-		myPackageOffer.Display();
+		myPackageOffer.Display(detailsText);
 	}
 
 }

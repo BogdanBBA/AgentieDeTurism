@@ -14,13 +14,12 @@ public class PackageOfferBuilderAgent
 		this.packageOfferBuilder = packageOfferBuilder;
 	}
 
-	public void Construct(ERoomType roomType, Hotel hotel, IPackageLevel packageLevel, TravelContext travelContext, int price)
+	public void Construct(ERoomType roomType, Hotel hotel, IPackageLevel packageLevel, TravelContext travelContext)
 	{
 		packageOfferBuilder.setPackageLevel(packageLevel);
 		packageOfferBuilder.setTravelContext(travelContext);
 		packageOfferBuilder.setRoomType(roomType);
 		packageOfferBuilder.setHotel(hotel);
-		packageOfferBuilder.setPrice(price);
 	}
 
 	public PackageOffer GetResult()

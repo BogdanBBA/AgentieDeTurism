@@ -7,15 +7,15 @@ public class TestTheDecorator
 	{
 		BasicPackageOffer basic = new BasicPackageOffer();
 		basic.Assemble();
-		basic.Display();
+		//basic.Display();
 
 		PackageOfferDecorator allInclusiveDecorator = new AllInclusivePackageOfferDecorator(new BasicPackageOffer());
 		allInclusiveDecorator.Assemble();
-		allInclusiveDecorator.Display();
+		//allInclusiveDecorator.Display();
 
 		PackageOfferDecorator ultraAllInclusiveDecorator = new UltraAllInclusivePackageOfferDecorator(new BasicPackageOffer());
 		ultraAllInclusiveDecorator.Assemble();
-		ultraAllInclusiveDecorator.Display();
+		//ultraAllInclusiveDecorator.Display();
 
 		
 		

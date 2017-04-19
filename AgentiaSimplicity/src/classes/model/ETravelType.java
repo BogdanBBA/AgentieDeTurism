@@ -1,12 +1,12 @@
 package classes.model;
 
-public enum ERoomType
+public enum ETravelType
 {
-	SingleRoom(0), DoubleRoom(1), Apartament(2);
+	NotIncluded(0), Plane(1), Bus(2),Train(3);
 	
 	private int value;
 	
-	ERoomType(int value)
+	ETravelType(int value)
 	{
 		this.value = value;
 	}
