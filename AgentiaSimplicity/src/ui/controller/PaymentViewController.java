@@ -1,6 +1,8 @@
 package ui.controller;
 
-import classes.builder.PackageOffer;
+import java.time.LocalDate;
+import java.util.List;
+import classes.model.Hotel;
 import classes.proxy.SafeProxyAccount;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,29 +18,48 @@ public class PaymentViewController
 	private Stage primaryStage=new Stage();
 	private SafeProxyAccount safeAccount;
 	public GraphicMethods graphicM=new GraphicMethods();
-	private PackageOffer offer;
-	private double finalPrice;
-	
+	private List<String> list;
+	private Hotel hotel;
+	private LocalDate inDate;
+	private long nrDays;
+
+	public void setList(List<String> list) 
+	{
+		this.list = list;
+	}
+
 	public void setSafeAccount(SafeProxyAccount safeAccount) 
 	{
 		this.safeAccount = safeAccount;
 	}
 	
-	public void setPackageOffer(PackageOffer offer) 
+	public void setHotel(Hotel hotel)
 	{
-		this.offer = offer;
+		this.hotel=hotel;
 	}
 	
-	public void setFinalPrice(double finalPrice) 
+	public void setCheckIn(LocalDate inDate)
 	{
-		this.finalPrice = finalPrice;
+		this.inDate=inDate;
+	}
+	
+	public void setDuration(long nofDays)
+	{
+		this.nrDays=nofDays;
 	}
 	
 	public void setView()
 	{
-		detailsText.appendText("\n");
-		offer.getPackageLevel().Display(detailsText);
-		detailsText.appendText("\n\n\nTotal cost:   "+finalPrice);
+		detailsText.appendText("\nYour reservation details\n\n\n");
+		detailsText.appendText("Location\n");
+		detailsText.appendText("\t"+hotel.getName()+" ( "+hotel.getCity().getName()+" )\n\n");
+		detailsText.appendText("Check-in date\n");
+		detailsText.appendText("\t"+inDate+" \n\n");
+		detailsText.appendText("Duration\n");
+		detailsText.appendText("\t"+nrDays+"  days\n\n");
+		detailsText.appendText("Facilities included\n");
+		for(int i=0;i<list.size();i++)
+			detailsText.appendText(list.get(i)+"\n");
 	}
 	
 	@FXML

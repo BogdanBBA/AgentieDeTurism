@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import classes.builder.PackageOffer;
-import classes.decorator.BasicPackageOffer;
-import classes.decorator.PackageOfferDecorator;
+import classes.decorator.PackageDecorator;
+import classes.decorator.Package;
 
 public class Utils {
 
@@ -17,8 +17,8 @@ public class Utils {
 	
 	static
 	{
-		BASIC.add(new AbstractMap.SimpleEntry<String, Integer>("Mic dejun inclus - bufet suedez.", 0));
-		BASIC.add(new AbstractMap.SimpleEntry<String, Integer>("Bar - bauturi alcoolice si racoritoare din productie indigena(bere, vin alb/rosu, bauturi spirtoase)", 0));
+		BASIC.add(new AbstractMap.SimpleEntry<String, Integer>("Mic dejun inclus - bufet suedez.", 3));
+		BASIC.add(new AbstractMap.SimpleEntry<String, Integer>("Bar - bauturi alcoolice si racoritoare din productie indigena(bere, vin alb/rosu, bauturi spirtoase)", 4));
 	
 		ALLINCLUSIVE.add(new AbstractMap.SimpleEntry<String, Integer>("Pranz inclus - buefet suedez.", 5));
 		ALLINCLUSIVE.add(new AbstractMap.SimpleEntry<String, Integer>("Cina inclusa - buefet suedez.", 6));
@@ -32,14 +32,10 @@ public class Utils {
 		ULTRAALLINCLUSIVE.add(new AbstractMap.SimpleEntry<String, Integer>("Acces la sala de fitness.", 10));	
 	}
 	
-
-	
-	
-	 public double calculatePrice(PackageOffer offer, long nofDays)
+	public double calculatePrice(PackageOffer offer, long nofDays)
 	 {
 		 double overallSum = 0;
-		 //eroare daca e de tipul basic package offer .Nu se poate face castul la packageofferdecorator
-		 int packageOfferPrice = ((BasicPackageOffer) ((PackageOfferDecorator) offer.getPackageLevel()).getMyPackageOffer()).getPrice();
+		 int packageOfferPrice = ((Package) ((PackageDecorator) offer.getPackageLevel()).getMyPackage()).getPrice();
 		 double hotelPriceModifier = offer.getHotel().getPriceModifier();
 		 int travelContextPrice = offer.getTravelContext().getPrice();
 		 

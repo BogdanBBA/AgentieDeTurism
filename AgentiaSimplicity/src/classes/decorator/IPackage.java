@@ -1,8 +1,8 @@
 package classes.decorator;
 
-import javafx.scene.control.TextArea;
+import java.util.List;
 
-public interface IPackageLevel
+public interface IPackage 
 {
 	EPackageType getType();
 
@@ -12,6 +12,5 @@ public interface IPackageLevel
 
 	void Assemble();
 
-	void Display(TextArea detailsText);
-	
+	List<String> Display();
 }

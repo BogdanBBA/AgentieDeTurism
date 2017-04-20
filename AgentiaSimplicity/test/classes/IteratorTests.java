@@ -13,9 +13,9 @@ public class IteratorTests
 	public void iteratorTest1() // not really a unit test, just prints out stuff
 	{
 		ArrayList<AgencyResource> myResources = new ArrayList<>();
-		//myResources.add(new AgencyResourceTestImplementation("ABC"));
-		//myResources.add(new AgencyResourceTestImplementation("123"));
-		//myResources.add(new AgencyResourceTestImplementation("Hello? This is the internet."));
+		myResources.add(new AgencyResourceTestImplementation("ABC"));
+		myResources.add(new AgencyResourceTestImplementation("123"));
+		myResources.add(new AgencyResourceTestImplementation("Hello? This is the internet."));
 
 		IEnumerator iterator = new StandardEnumerable().getEnumerator(myResources);
 		

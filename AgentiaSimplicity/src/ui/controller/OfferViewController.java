@@ -3,24 +3,14 @@ package ui.controller;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
+import classes.CreateOffer;
 import classes.Utils;
-import classes.builder.IPackageOfferBuilder;
 import classes.builder.PackageOffer;
-import classes.builder.PackageOfferBuilder;
-import classes.builder.PackageOfferBuilderAgent;
-import classes.decorator.AllInclusivePackageOfferDecorator;
-import classes.decorator.BasicPackageOffer;
-import classes.decorator.IPackageLevel;
-import classes.decorator.UltraAllInclusivePackageOfferDecorator;
 import classes.model.ERoomType;
 import classes.model.ETravelType;
 import classes.model.Hotel;
 import classes.proxy.SafeProxyAccount;
-import classes.strategy.TravelByBus;
-import classes.strategy.TravelByPlane;
-import classes.strategy.TravelByTrain;
-import classes.strategy.TravelContext;
-import classes.strategy.TravelNotIncluded;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -91,6 +81,7 @@ public class OfferViewController
 	private ObservableList<String> travel = FXCollections.observableArrayList("Not included", "By plane", "By bus", "By train");
 	private SafeProxyAccount safeAccount;
 	public GraphicMethods graphicM = new GraphicMethods();
+	public CreateOffer createOffer=new CreateOffer();
 	private LocalDate inDate;
 	private LocalDate outDate;
 	private ERoomType chosenRoom;
@@ -99,6 +90,7 @@ public class OfferViewController
 	private Hotel hotel;
 	private PackageOffer offer;
 	private double finalPrice;
+	private long nofDays;
 
 	public void setSafeAccount(SafeProxyAccount safeAccount)
 	{
@@ -172,6 +164,7 @@ public class OfferViewController
 		inDate = checkinPicker.getValue();
 		outDate = checkoutPicker.getValue();
 		finalPrice=0;
+		LocalDate now = LocalDate.now();
 		
 		if(inDate == null)
 			graphicM.showMyAlert("No check in date !", "  Please choose a date.");
@@ -184,6 +177,8 @@ public class OfferViewController
 					graphicM.showMyAlert("Equal dates !", "  Please choose different dates.");
 				if(inDate.isAfter(outDate))
 					graphicM.showMyAlert("Wrong dates !", "  Please choose check in date to be before check out date.");
+				if(inDate.isBefore(now))
+					graphicM.showMyAlert("Wrong dates !", "  We do not make reservations in the past. Please choose other dates.");
 				if(chosenRoom == null)
 					graphicM.showMyAlert("No room type !", "  Please choose a room type.");
 				else
@@ -194,54 +189,11 @@ public class OfferViewController
 							graphicM.showMyAlert("No travelling type !", "  Please choose a travel type.");
 						else 
 						{		
-							long nofDays = ChronoUnit.DAYS.between(inDate, outDate);
+							nofDays = ChronoUnit.DAYS.between(inDate, outDate);
 							
 							Utils utils = new Utils();
-							
-							IPackageOfferBuilder builder = new PackageOfferBuilder();
-							PackageOfferBuilderAgent agent = new PackageOfferBuilderAgent(builder);
-							
-							
-							TravelContext travelContext = null;
-							
-							switch(travellingType)
-							{
-								case NotIncluded:
-									travelContext = new TravelContext(new TravelNotIncluded());
-									break;
-								case Bus:
-									travelContext = new TravelContext(new TravelByBus());
-									break;
-								case Plane:
-									travelContext = new TravelContext(new TravelByPlane());
-									break;
-								case Train:
-									travelContext = new TravelContext(new TravelByTrain());
-									break;
-									
-							}
-							travelContext.executeStrategy();
-							
-							IPackageLevel decorator = null;
-							
-							switch(chosenFacility)
-							{
-							case "Basic":
-								decorator = new BasicPackageOffer();
-								break;
-							case "All inclusive":
-								decorator = new AllInclusivePackageOfferDecorator(new BasicPackageOffer());
-								break;
-							case "Ultra all inclusive":
-								decorator = new UltraAllInclusivePackageOfferDecorator(new BasicPackageOffer());
-								break;
-							default:
-								break;
-							}
-							agent.Construct(chosenRoom, hotel, decorator, travelContext);
-							
-							offer = agent.GetResult();
 						
+							offer = createOffer.createOffer(travellingType,chosenFacility,hotel,chosenRoom);
 							
 							finalPrice += utils.calculatePrice(offer, nofDays);
 							if(finalPrice>0)
@@ -255,12 +207,11 @@ public class OfferViewController
 	{
 		
 		if(safeAccount==null)
-			graphicM.showMyAlert("Not logged in!", "  You must be logged in in order to make a reservation.");
+			graphicM.showMyAlert("Not logged in!", "  You must be logged in order to make a reservation.");
 		else
 		{
-			if(offer!=null && finalPrice>=0)
-			{
-				if(safeAccount.reserve())
+			List<String> list=safeAccount.reserve(offer,finalPrice);
+				if(list.size()!=0)
 				{
 					FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ui/view/PaymentView.fxml"));
 		  			Parent root;
@@ -269,8 +220,10 @@ public class OfferViewController
 						root = (Parent)fxmlLoader.load();
 						PaymentViewController controller = fxmlLoader.<PaymentViewController>getController();
 						controller.setSafeAccount(safeAccount);
-						controller.setFinalPrice(finalPrice);
-						controller.setPackageOffer(offer);
+						controller.setList(list);
+						controller.setCheckIn(inDate);
+						controller.setDuration(nofDays);
+						controller.setHotel(hotel);
 		  				controller.setView();
 		  				graphicM.setStage(primaryStage,root);
 		  				graphicM.closeStage(event);
@@ -282,10 +235,7 @@ public class OfferViewController
 					}
 				}
 				else
-					graphicM.showMyAlert("Not logged in!", "  You must be logged in in order to make a reservation.");
-			}
-			else
-				graphicM.showMyAlert("No offer!", "  You must choose data for offer in order to make a reservation.");
+					graphicM.showMyAlert("No offer!", "  You must choose data for offer in order to make a reservation.");
 		}
 	}
 	

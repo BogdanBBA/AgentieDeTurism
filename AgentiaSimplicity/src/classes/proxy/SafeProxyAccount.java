@@ -1,5 +1,9 @@
 package classes.proxy;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import classes.builder.PackageOffer;
 import classes.model.User;
 
 public class SafeProxyAccount implements IAccount
@@ -23,14 +27,15 @@ public class SafeProxyAccount implements IAccount
 	}
 
 	@Override
-	public boolean reserve()
+	public List<String> reserve(PackageOffer offer,double finalPrice)
 	{
+		List<String> list=new ArrayList<>();
 		if (wrappedAccount != null)
 		{
-			if (wrappedAccount.reserve())
-				return true;
+			if (offer!=null && finalPrice>=0)
+				list=wrappedAccount.reserve(offer,finalPrice);
 		}
-		return false;
+		return list;
 	}
 
 	@Override

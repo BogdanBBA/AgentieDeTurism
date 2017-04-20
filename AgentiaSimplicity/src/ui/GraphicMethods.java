@@ -1,7 +1,6 @@
 package ui;
 
 import java.io.IOException;
-
 import classes.model.User;
 import classes.proxy.SafeProxyAccount;
 import javafx.event.ActionEvent;
@@ -114,6 +113,7 @@ public class GraphicMethods
 		}
 		return safeAccount;
 	}
+	
 	
 	public void logout(Button buttonLogout,Accordion accordion)
 	{
